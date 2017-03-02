@@ -1,0 +1,3 @@
+class CommitteeMember < User
+
+end
