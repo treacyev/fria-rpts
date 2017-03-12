@@ -1,0 +1,19 @@
+<h1>Review List</h1>
+
+<table>
+  <tr>
+    <th>Attachment</th>
+    <th>Created Date/time</th>
+    <th>Updated Date/time</th>
+  </tr>
+
+  <% @reviews.each do |review| %>
+    <tr>
+      <td><%= review.attachment %></td>
+      <td><%= review.created_at%></td>
+      <td><%= review.updated_at%></td>
+
+      <td><%= link_to "Download Attachment", review.attachment_url %></td>
+    </tr>
+  <% end %>
+</table>
