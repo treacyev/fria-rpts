@@ -1,0 +1,54 @@
+1)
+-add to gemfile
+
+group :development, :test do
+	gem "rspec-rails", "~> 2.14.0"
+	gem "factory_girl_rails", "~> 4.2.1"
+end
+
+group :test do
+	gem "faker", "~> 1.1.2"
+	gem "capybara", "2.1.0"
+	gem "database_cleaner", "~> 1.0.1"
+	gem "launchy", "~> 2.3.0"
+	gem "selenium-webdriver", "2.35.1"
+end
+
+-bundle install
+
+2)
+-Open the file config/database.yml
+
+test:
+	adapter: postgresql
+	encoding: utf8
+	database: contacts_test (name of application)
+	pool: 5
+	username: root (system username)
+	password:
+
+-bundle exec rake db:create:all
+-bundle exec rails generate rspec:install
+
+3)Open .rspec file
+--format documentation
+
+4)
+Open config/application.rb add code:
+
+config.generators do |g|
+	g.test_framework :rspec,
+	fixtures: true,
+	view_specs: false,
+	helper_specs: false,
+	routing_specs: false,
+	controller_specs: true,
+	request_specs: false,
+	g.fixture_replacement :factory_girl, dir: "spec/factories"
+end
+
+5) Clone database structure as used in development to the test database (data not copied)
+rake db:test:clone
+
+6) RUN rspec
+bundle exec rspec
