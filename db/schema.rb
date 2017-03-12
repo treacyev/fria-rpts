@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215164003) do
+ActiveRecord::Schema.define(version: 20170312090838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "proposals", force: :cascade do |t|
+    t.string   "title"
+    t.string   "principalResearcher"
+    t.text     "coresearchers"
+    t.float    "rdCost"
+    t.string   "sourceExternal"
+    t.string   "amountExternal"
+    t.text     "facMat"
+    t.text     "objectives"
+    t.text     "expectedOutputs"
+    t.text     "description"
+    t.string   "weeklyHours"
+    t.boolean  "endorsement"
+    t.boolean  "submitAgency"
+    t.text     "listAgency"
+    t.string   "attachment"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "trial2s", force: :cascade do |t|
+    t.string   "tile2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trial3s", force: :cascade do |t|
+    t.string   "title3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trials", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

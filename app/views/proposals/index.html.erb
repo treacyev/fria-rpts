@@ -1,0 +1,47 @@
+<h1>Proposal List</h1>
+<%= link_to 'New', new_proposal_path %>
+<table>
+  <tr>
+    <th>Title of Project</th>
+    <th>Principal Researcher</th>
+    <th>Name of Coresearchers</th>
+    <th>Total Research and Development Cost</th>
+    <th>Source of External Funds</th>
+    <th>Amount of External Funds</th>
+    <th>Facilities, Materials, Staff within the Department or College (if any)</th>
+    <th>Objectives of the Project</th>
+    <th>Expected Outputs</th>
+    <th>Description of Work Done and Accomplishemnts (if project is in progress)</th>
+    <th>Estimated Number of Hours Per Week Devoted to this Project</th>
+    <th>Have you attained endorsement from Department Head/Chairman?</th>
+    <th>Have you submitted this proposal to any other funding agency? If yes, please state</th>
+    <th>List of Agencies</th>
+    <th>Attachment</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <% @proposals.each do |proposal| %>
+    <tr>
+      <td><%= proposal.title %></td>
+      <td><%= proposal.principalResearcher %></td>
+      <td><%= proposal.coresearchers %></td>
+      <td><%= proposal.rdCost %></td>
+      <td><%= proposal.sourceExternal %></td>
+      <td><%= proposal.amountExternal %></td>
+      <td><%= proposal.facMat %></td>
+      <td><%= proposal.objectives %></td>
+      <td><%= proposal.expectedOutputs %></td>
+      <td><%= proposal.description %></td>
+      <td><%= proposal.weeklyHours %></td>
+      <td><%= proposal.endorsement %></td>
+      <td><%= proposal.submitAgency %></td>
+      <td><%= proposal.listAgency %></td>
+      <td><%= proposal.attachment %></td>
+      <td><%= link_to 'Show', proposal_path(proposal) %></td>
+      <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
+      <td><%= link_to 'Destroy', proposal_path(proposal),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

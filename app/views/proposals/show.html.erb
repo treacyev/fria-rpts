@@ -1,0 +1,77 @@
+<p>
+  <strong>Title of Project</strong>
+  <%= @proposal.title %>
+</p>
+
+<p>
+  <strong>Principal Researcher</strong>
+  <%= @proposal.principalResearcher %>
+</p>
+
+<p>
+  <strong>Name of Coresearchers</strong>
+  <%= @proposal.coresearchers %>
+</p>
+
+<p>
+  <strong>Total Research and Development Cost</strong>
+  <%= @proposal.rdCost %>
+</p>
+
+<p>
+  <strong>Source of External Funds</strong>
+  <%= @proposal.sourceExternal %>
+</p>
+
+<p>
+  <strong>Amount of External Funds</strong>
+  <%= @proposal.amountExternal %>
+</p>
+
+<p>
+  <strong>Facilities, Materials, Staff within the Department or College (if any)</strong>
+  <%= @proposal.facMat %>
+</p>
+
+<p>
+  <strong>Objectives of the Project</strong>
+  <%= @proposal.objectives %>
+</p>
+
+<p>
+  <strong>Expected Outputs</strong>
+  <%= @proposal.expectedOutputs %>
+</p>
+
+<p>
+  <strong>Description of Work Done and Accomplishemnts (if project is in progress)</strong>
+  <%= @proposal.description %>
+</p>
+
+<p>
+  <strong>Estimated Number of Hours Per Week Devoted to this Project</strong>
+  <%= @proposal.weeklyHours %>
+</p>
+
+<p>
+  <strong>Have you attained endorsement from Department Head/Chairman?</strong>
+  <%= @proposal.endorsement %>
+</p>
+
+<p>
+  <strong>Have you submitted this proposal to any other funding agency? If yes, please state</strong>
+  <%= @proposal.submitAgency %>
+</p>
+
+<p>
+  <strong>List of Agencies</strong>
+  <%= @proposal.listAgency %>
+</p>
+
+<p>
+  <strong>Attachment</strong>
+  <%= @proposal.attachment %>
+</p>
+
+<%= link_to 'Edit', edit_proposal_path(@proposal) %> |
+<%= link_to 'Back', proposals_path %>
