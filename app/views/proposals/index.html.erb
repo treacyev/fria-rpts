@@ -1,5 +1,5 @@
 <h1>Proposal List</h1>
-<%= link_to 'New', new_proposal_path %>
+
 <table>
   <tr>
     <th>Title of Project</th>
@@ -17,6 +17,8 @@
     <th>Have you submitted this proposal to any other funding agency? If yes, please state</th>
     <th>List of Agencies</th>
     <th>Attachment</th>
+    <th>Created Date/time</th>
+    <th>Updated Date/time</th>
     <th colspan="3"></th>
   </tr>
 
@@ -37,9 +39,13 @@
       <td><%= proposal.submitAgency %></td>
       <td><%= proposal.listAgency %></td>
       <td><%= proposal.attachment %></td>
+      <td><%= proposal.created_at%></td>
+      <td><%= proposal.updated_at%></td>
+
+      <td><%= link_to "Download Attachment", proposal.attachment_url %></td>
       <td><%= link_to 'Show', proposal_path(proposal) %></td>
       <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
-      <td><%= link_to 'Destroy', proposal_path(proposal),
+      <td><%= link_to 'Delete', proposal_path(proposal),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>

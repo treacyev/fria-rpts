@@ -1,0 +1,46 @@
+1)
+rails g scaffold Submission title:string principalResearcher:string currentRank:string departmentInstitute:string time:string coresearchers:text rdCost:string sourceExternal:string amountExternal:string facMat:text objectives:text expectedOutputs:text description:text accomplishments:text weeklyHours:string attachment:string
+rails db:migrate
+
+
+2)
+sudo gem install carrierwave -v "1.0.0.rc"
+paste this in gemfile:
+  gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+bundle install
+
+
+3)
+rails g uploader attachment
+Paste this at app/models/submission.rb inside class Submission:
+  mount_uploader :attachment, AttachmentUploader
+
+
+4)
+in app/views/submissions/_form.html.erb:
+  #CHANGE f.text_field INTO f.file_field
+  <div class="field">
+    <%= f.label :attachment %>
+    <%= f.file_field :attachment %>
+  </div>
+
+
+5)
+Paste this in app/views/submissions/index.html.erb:
+  #column titles
+  <th>Created Date/time</th>
+  <th>Updated Date/time</th>
+
+  #real values
+  <td><%= submission.created_at%></td>
+  <td><%= submission.updated_at%></td>
+
+  <td><%= link_to "Download Attachment", submission.attachment_url %></td>
+
+
+6)
+paste this app/uploaders/attachment_uploader.rb:
+  #accepts pdf only
+  def extension_white_list
+    %w(pdf)
+  end
