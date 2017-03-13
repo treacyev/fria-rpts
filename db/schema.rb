@@ -15,6 +15,29 @@ ActiveRecord::Schema.define(version: 20170312090838) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "admins", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "title"
+    t.text     "body"
+    t.integer  "key"
+  end
+
+  create_table "committe_heads", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "committee_members", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "proposals", force: :cascade do |t|
     t.string   "title"
     t.string   "principalResearcher"
@@ -33,6 +56,33 @@ ActiveRecord::Schema.define(version: 20170312090838) do
     t.string   "attachment"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+  end
+
+  create_table "researchers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.string   "title"
+    t.string   "principalResearcher"
+    t.string   "currentRank"
+    t.string   "departmentInstitute"
+    t.string   "time"
+    t.text     "coresearchers"
+    t.string   "rdCost"
+    t.string   "sourceExternal"
+    t.string   "amountExternal"
+    t.text     "facMat"
+    t.text     "objectives"
+    t.text     "expectedOutputs"
+    t.text     "description"
+    t.text     "accomplishments"
+    t.text     "weeklyHours"
+    t.string   "attachment"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "researcher_id"
   end
 
   create_table "users", force: :cascade do |t|
