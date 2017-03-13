@@ -1,2 +1,2 @@
-class CommitteeHead
+class CommitteeHead < User
 end

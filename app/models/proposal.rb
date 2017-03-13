@@ -11,4 +11,6 @@ class Proposal < ApplicationRecord
   validates :attachment, presence: true
 
   mount_uploader :attachment, AttachmentUploader
+
+  belongs_to :user
 end
