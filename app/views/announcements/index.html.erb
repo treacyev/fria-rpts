@@ -1,0 +1,19 @@
+<h1>Announcement List</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+  <% @announcements.each do |announcement| %>
+    <tr>
+      <td><%= announcement.title %></td>
+      <td><%= link_to 'Show', announcement_path(announcement) %></td>
+      <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
+      <td><%= link_to 'Delete', announcement_path(announcement),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+
+    </tr>
+  <% end %>
+</table>
