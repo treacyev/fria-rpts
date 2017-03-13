@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(version: 20170313162007) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "announcement2s", force: :cascade do |t|
-    t.string   "title"
-    t.text     "text"
-    t.boolean  "isDraft"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "announcements", force: :cascade do |t|
     t.string   "title"
     t.text     "text"
