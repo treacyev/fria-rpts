@@ -1,6 +1,10 @@
 <p>
-  <strong>Announcement</strong>
+  <strong>Announcement Title: </strong>
   <%= @announcement.title %>
+</p>
+
+<p>
+  <%= @announcement.text %>
 </p>
 
 <%= link_to 'Edit', edit_announcement_path(@announcement) %> |
