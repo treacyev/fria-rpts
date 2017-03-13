@@ -1,0 +1,38 @@
+<!-- ORANGE HEADER -->
+		<div id="orange">
+			<div class="ui grid center aligned">
+				<div class="three column row">
+					<div class="column">
+						<table style="margin-left: 100px">
+							<tr>
+								<td></td>
+								<td><h1 style="text-align: left; font-size: 55px">FRIA</h1></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><h3 style="text-align: left; font-size: 20px">Faculty Research Incentive Award</h3></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</div> <!-- .column first -->
+					<div class="column"></div>
+					<div class="column">
+                        <%= form_for(:user, :url => session_path(:user), :html => { :class => 'ui form', :style => 'margin-top: 50px;'}) do |f| %>
+							<div class="three fields">
+								<div class="field">
+                                    <%= f.text_field :username, placeholder: 'Username' %>
+								</div>
+								&nbsp;
+								<div class="field">
+                                    <%= f.password_field :password, placeholder: 'Password' %>
+								</div>
+								&nbsp;
+                                    <%= f.submit 'Login', class: 'ui button' %>
+							</div>
+                        <% end %>
+					</div> <!-- .column third -->
+				</div> <!-- .three.column.rown --> 
+			</div> <!-- .ui.grid.center.aligned -->
+		</div> <!--orange -->
+		<!-- ORANGE HEADER -->

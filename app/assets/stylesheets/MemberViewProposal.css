@@ -1,0 +1,38 @@
+#orange {
+	color: white;
+	background-color: #e67e22 ;
+}
+
+#menu, #highlighted_page {
+	font-size: 23px;
+}
+
+#highlighted_page {
+	color: #a93226;
+}
+
+body {
+	background-color: #E5E8E8;
+}
+
+.ui.piled.segment {
+	height: 600px;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+#title {
+	font-size: 25px;
+}
+
+#author {
+	font-size: 20px;
+}
+
+#proposal_info {
+	font-size: 17px;
+}
+
+.ui.secondary.button {
+	margin-bottom: 20px;
+}
