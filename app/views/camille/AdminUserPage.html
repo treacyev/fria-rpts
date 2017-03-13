@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>FRIA</title>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+   		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+		<link rel = "stylesheet" type = "text/css" href = "AdminUserPage.css">
+	</head>
+
+	<body>
+		<!-- MODAL -->
+	    <div class="ui container" id="popup">
+	        <div class="ui small modal">
+	            <i class="close icon"></i>
+	            <div id="header" class="header" style="text-align: center">
+	              Cancel Grant Application
+	            </div>
+	            <div class="content">
+	              <!-- POP UP BOX -->
+	              	<div class="ui form" style="text-align: center">
+	              	<h2>Are you sure you want cancel this grant application?</h2>
+					  
+					  <button class="ui orange right floated button" id="yes" style="margin-bottom: 20px">Yes</button>
+					</div>
+	              <!-- POP UP BOX -->
+	            </div>
+	        </div>
+	    </div>
+	    <!-- MODAL -->
+		<!-- ORANGE HEADER -->
+		<div id="orange">
+			<div class="ui grid center aligned">
+				<div class="two column row">
+					<div class="column">
+						<table style="margin-left: 100px">
+							<tr>
+								<td></td>
+								<td><h1 style="text-align: left; font-size: 55px">FRIA</h1></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><h3 style="text-align: left; font-size: 20px">Faculty Research Incentive Award</h3></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>
+					</div> <!-- .column first -->
+					<div class="column">
+						<div class="ui relaxed grid" style="margin-top: 60px">
+							<div class="five column row">
+								<div class="column"><h3 id="menu">Home</h3></div>
+								<div class="column"><h3 id="highlighted_page">Accounts</h3></div>
+								<div class="column"><h3 id="menu">Settings</h3></div>
+								<div class="column"><h3 id="menu">Log Out</h3></div>
+							</div>
+						</div>
+					</div> <!-- .column third -->
+						</div> <!-- .ui.relaxed.grid -->
+					</div> <!-- .column third -->
+				</div> <!-- .three.column.row -->
+			</div> <!-- .ui.grid.center.aligned -->
+		</div> <!--f26b18 -->
+		<!-- ORANGE HEADER -->
+
+		<!-- BODY -->
+		<div class="ui stacked segment" style="margin-top: 100px; margin-left: 200px; margin-right: 200px">
+			<div class="ui grid middle aligned">
+				<table class="ui very basic table" style="margin-top: 20px">
+					<thead style="border: 2px solid grey">
+						<tr>
+						  <th><h4>User </h4></th>
+						  <th><h4>Status</h4></th>
+						  <th><h4>Actions</h4></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr id="rows">
+						  <td><h3>User 1</h3></td>
+						  <td><h3>Pending</h3></td>
+						  <td><button class="ui button" type="acti">Activate</button>&nbsp;<button class="ui button" id="delete">Delete</button></td>
+						</tr>
+						<tr id="rows">
+						  <td><h3>User 2</h3></td>
+						  <td><h3>Active</h3></td>
+						  <td><button class="ui button" id="deacti">Deactivate</button>&nbsp;<button class="ui button" id="delete">Delete</button></td>
+						</tr>
+						</tr>
+						<tr id="rows">
+						  <td><h3>User 3</h3></td>
+						  <td><h3>Not Engineering</h3></td>
+						  <td><button class="ui button" id="deacti">Deactivate</button>&nbsp;<button class="ui button" id="delete">Delete</button></td>
+						</tr>
+						<tr id="rows">
+						  <td><h3>User 4</h3></td>
+						  <td><h3>Deactivated</h3></td>
+						  <td><button class="ui button" type="acti">Activate</button>&nbsp;<button class="ui button" id="delete">Delete</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div> <!-- .ui.grid.middle.aligned -->
+		</div> <!-- .ui.stacked.segment -->
+		<!-- BODY -->
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.js"></script>
+		<script>
+	      $('.ui.modal')
+	        .modal('attach events', '#cancel', 'show')
+	      ;
+	    </script>
+	</body>
+
+</html>
