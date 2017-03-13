@@ -1,16 +1,13 @@
-		<!-- BODY -->
 			<div class="ui relaxed grid center aligned">
 				<div class="two column row" style="margin-top: 70px; height: 710px; overflow: hidden">
 					<div class="eight wide column">
 						<div class="ui relaxed grid">
 							<div class="row">
-								<!-- COUNTDOWN -->
 								<div class="column">
 									<div class="ui container segment" id="countdown">
 										<h2>COUNTDOWN</h2>
 									</div>
 								</div>
-								<!-- COUNTDOWN -->
 							</div>
 							<br>
 							<div class="row">
@@ -90,50 +87,51 @@
 									<!-- SIGN UP -->
 									<div id="signuppage" class="ui container segment" style="text-align: left">
 										<h2>SIGN UP</h2>
-										<form class="ui form">
+										<%= form_for(@user, :url => registration_path(@user), html: {class: 'ui form'}) do |f| %>
 											<div class="two fields">
 												<div class="field">
 													<label>First Name</label>
-													<input type="text" name="firstname" placeholder="First Name">
+													<%= f.text_field :first_name, placeholder: 'First Name'%>
 												</div>
 												<div class="field">
 													<label>Last Name</label>
-													<input type="text" name="lastname" placeholder="Last Name">
+													<%= f.text_field :last_name, placeholder: 'Last Name'%>
 												</div>
 											</div>
 											<div class="two fields">
 												<div class="field">
 													<label>Contact Number</label>
-													<input type="text" name="contact" placeholder="Contact Number">
+													<%= f.text_field :contact_number, placeholder: 'First Name'%>
 												</div>
 												<div class="field">
 													<label>Email Address</label>
-													<input type="text" name="email" placeholder="Email Address">
+													<%= f.text_field :email, placeholder: 'Email'%>
 												</div>
 											</div>
 											<div class="two fields">
 												<div class="field">
 													<label>Password</label>
-													<input type="password" name="password" placeholder="Password">
+													<%= f.password_field :password, placeholder: 'Password'%>
+
 												</div>
 												<div class="field">
 													<label>Confirm Password</label>
-													<input type="password" name="password_confirm" placeholder="Confirm Password">
+													<%= f.password_field :password_confirmation, placeholder: "Confirm Password"%>
 												</div>
 											</div>
 											<div class="two fields">
 												<div class="field">
 													<label>Deparment</label>
-													<input type="text" name="department" placeholder="Engineering Department">
+													<%= f.text_field :department, placeholder: "Deparment/Institute" %>
 												</div>
 												<div class="field">
 													<label>Rank</label>
-													<input type="text" name="rank" placeholder="Rank">
+													<%= f.text_field :rank, placeholder: "Rank" %>
 												</div>
 											</div>
 											<br>
-											<button class="ui orange button" type="signup" style="margin-bottom: 20px">Create Account</button>
-										</form>
+											<%= f.submit 'Create Account', class: "ui orange button", style: "margin-bottom: 20px;"%>
+										<% end %>
 									</div>
 									<!-- SIGN UP -->
 								</div> <!-- .column -->
@@ -142,4 +140,3 @@
 					</div> <!-- .four.wide.column -->
 				</div> <!-- .two.column.row -->
 			</div> <!-- .ui.relaxed.grid.center.aligned -->
-		<!-- BODY -->

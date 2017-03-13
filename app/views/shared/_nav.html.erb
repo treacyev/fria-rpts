@@ -18,10 +18,10 @@
 					</div> <!-- .column first -->
 					<div class="column"></div>
 					<div class="column">
-                        <%= form_for(:user, :url => session_path(:user), :html => { :class => 'ui form', :style => 'margin-top: 50px;'}) do |f| %>
+                        <%= form_for(@user, :url => session_path(@user), :html => { :class => 'ui form', :style => 'margin-top: 50px;'}) do |f| %>
 							<div class="three fields">
 								<div class="field">
-                                    <%= f.text_field :username, placeholder: 'Username' %>
+                                    <%= f.text_field :email, placeholder: 'Email' %>
 								</div>
 								&nbsp;
 								<div class="field">
