@@ -15,33 +15,10 @@ ActiveRecord::Schema.define(version: 20170313163746) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "announcement2s", force: :cascade do |t|
-    t.string   "title"
-    t.text     "text"
-    t.boolean  "isDraft"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "announcements", force: :cascade do |t|
     t.string   "title"
     t.text     "text"
     t.boolean  "isDraft"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "committe_heads", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "committee_members", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

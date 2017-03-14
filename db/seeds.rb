@@ -12,7 +12,7 @@
 # Announcement.create(title: 'End of Submission Period', text: 'Proposal submission will be closed', isDraft:false)
 # Announcement.create(title: 'Results', text: 'Results will be released next week friday', isDraft:false)
 
-Researcher.create(first_name: 'Com', last_name: 'Pyutierre', department: 'MMM', rank: 'Assistant Instructor', contact_number: '9123456789', email: 'mail1@example.com', password: "password", password_confirmation: "password", password: "password", password_confirmation: "password") 
+Researcher.create(first_name: 'Com', last_name: 'Pyutierre', department: 'MMM', rank: 'Assistant Instructor', contact_number: '9123456789', email: 'mail1@example.com', password: "password", password_confirmation: "password") 
 Researcher.create(first_name: 'Palma', last_name: 'Haul', department: 'CoE', rank: 'Professor', contact_number: '9333867460', email: 'mail2@example.com', password: "password", password_confirmation: "password")
 Admin.create(first_name: 'Mang', last_name: 'Melchor', department: 'CE', rank: 'Instructor', contact_number: '9835583620', email: 'mail3@example.com', password: "password", password_confirmation: "password")
 CommitteeHead.create(first_name: 'Romulo', last_name: 'Hall', department: 'ECE', rank: 'Instructor', contact_number: '9653778294', email: 'mail4@example.com', password: "password", password_confirmation: "password")
