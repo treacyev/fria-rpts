@@ -44,6 +44,7 @@ group :test do
   gem 'database_cleaner', '~> 1.5.3'
   gem 'launchy', '~> 2.4.3'
   gem 'selenium-webdriver', '~> 3.0.5'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do

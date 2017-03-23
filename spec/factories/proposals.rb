@@ -14,6 +14,6 @@ FactoryGirl.define do
     endorsement false
     submitAgency false
     listAgency "MyText"
-    attachment "MyString"
+    attachment { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'sample', 'sample_upload.pdf')) }
   end
 end

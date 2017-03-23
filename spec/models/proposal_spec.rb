@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Proposal, type: :model do
   describe '.create' do
+    it 'is valid when it has valid parameters' do
+      expect(FactoryGirl.build(:user_with_proposal)).to be_valid
+    end
+
+    it { is_expected.to belong_to :user}
+
     it 'is invalid without a title' do
       expect(FactoryGirl.build(:proposal, title: nil)).to be_invalid
     end
