@@ -1,56 +1,18 @@
-		<div id="orange">
-			<div class="ui grid center aligned">
-				<div class="three column row">
-					<div class="column">
-						<table style="margin-left: 100px">
-							<tr>
-								<td></td>
-								<td><h1 style="text-align: left; font-size: 55px">FRIA</h1></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td><h3 style="text-align: left; font-size: 20px">Faculty Research Incentive Award</h3></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</table>
-					</div> <!-- .column first -->
-					<div class="column"></div>
-					<div class="column">
-						<%  unless user_signed_in? %>
-                        <%= form_for(@user, :url => session_path(@user), :html => { :class => 'ui form', :style => 'margin-top: 50px;'}) do |f| %>
-							<div class="three fields">
-								<div class="field">
-                                    <%= f.text_field :email, placeholder: 'Email' %>
-								</div>
-								&nbsp;
-								<div class="field">
-                                    <%= f.password_field :password, placeholder: 'Password' %>
-								</div>
-								&nbsp;
-                                    <%= f.submit 'Login', class: 'ui button' %>
-							</div>
-                        <% end %>
-						<% else %>
-						<div class="ui relaxed grid" style="margin-top: 60px">
-							<div class="four column row">
-								<div class="column"><h3 id="menu">Home</h3></div>
-								<div class="column">
-									<div class="ui simple dropdown">
-										<div class="text"><h3 id="highlighted_page">Proposals</h3></div>
-										<i class="dropdown icon"></i>
-										<div class="menu">
-											<div class="item"><h3 id="menu" style="font-size: 17px">Submit Proposal</h3></div>
-											<div class="item"><h3 id="highlighted_page" style="font-size: 17px">My Proposals</h3></div>
-										</div>
-									</div>
-								</div>
-								<div class="column"><h3 id="menu">Settings</h3></div>
-								<div class="column"><h3 id="menu" ><a href="/users/sign_out" data-method="delete" style="color: #fff;">Logout</a></h3></div>
-							</div>
-						</div> <!-- .ui.relaxed.grid -->
-						<% end %>
-					</div> <!-- .column third -->
-				</div> <!-- .three.column.rown --> 
-			</div> <!-- .ui.grid.center.aligned -->
-		</div> <!--orange -->
+<div class="ui fixed menu borderless">
+	<div class="ui container">
+		<div class="left menu">
+			<a class="item brand">
+				<%= image_tag 'coe_logo.png', class: 'ui tiny middle aligned image' %>
+				<h1 class="ui header white spaced">
+					FRIA
+					<div class="sub header white">
+					Faculty Research Incentive Award
+					</div>
+				</h1>
+			</a>
+		</div>
+		<div class="right menu">
+			<div class="ui input"></div>
+		</div>
+	</div>
+</div>

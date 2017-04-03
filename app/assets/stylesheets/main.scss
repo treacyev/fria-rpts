@@ -1,0 +1,19 @@
+$primary-color: #e67e22;
+$white: #fafafa;
+
+.ui.menu {
+    background-color: $primary-color !important;
+}
+
+.white {
+    color: $white !important;
+}
+
+.ui.header.spaced {
+    letter-spacing: 3px;
+    margin: 0;
+    .sub.header {
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+}
