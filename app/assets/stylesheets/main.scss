@@ -17,3 +17,17 @@ $white: #fafafa;
         font-size: 12px;
     }
 }
+
+#login {
+    display: flex;
+    align-items: center;
+
+    .ui.button{
+        margin-top: 23px;
+        height: 70%;
+    }
+
+    .field label {
+        color: $white;
+    }
+}
