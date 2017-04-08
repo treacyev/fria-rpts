@@ -9,12 +9,8 @@
   </head>
 
   <body>
-    <%= render 'shared/nav'%>
-      <div class="ui container">
-        <% flash.each do |key, value| %>
-          <div class="ui message <%= key %>" style="margin-top: 50px;"><%= value %></div>
-        <% end %>
-      </div>
+    <%= render 'shared/nav' %>
+    <%= render 'shared/flash' %>
     <%= yield %>
   </body>
 </html>
