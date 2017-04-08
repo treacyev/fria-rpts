@@ -12,17 +12,26 @@
 			</a>
 		</div>
 		<div class="right menu">
-			<%= form_for(@user, :url => session_path(@user), :html => {class: "ui form", id: "login"}) do |f| %>
-				<div class="fields">
-					<div class="field">
-						<%= f.label :email %>
-						<%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+			<% unless user_signed_in? %>
+				<%= form_for(@user, :url => session_path(@user), :html => {class: "ui form", id: "login"}) do |f| %>
+					<div class="fields">
+						<div class="field">
+							<%= f.label :email %>
+							<%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+						</div>
+						<div class="field">
+							<%= f.label :password %>
+							<%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+						</div>
+						<%= f.submit "Login", class: "ui button" %>
 					</div>
-					<div class="field">
-						<%= f.label :password %>
-						<%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
-					</div>
-					<%= f.submit "Login", class: "ui button" %>
+				<% end %>
+			<% else %>
+				<div class="item white">
+					Hello, <%= "#{current_user.first_name} #{current_user.last_name}" %>
+				</div>
+				<div id="logout">
+					<%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'ui button') %>  
 				</div>
 			<% end %>
 		</div>

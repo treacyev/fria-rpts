@@ -24,10 +24,20 @@ $white: #fafafa;
 
     .ui.button{
         margin-top: 23px;
-        height: 70%;
+        height: 36px;
     }
 
     .field label {
         color: $white;
+    }
+}
+
+#logout {
+    display: flex;
+    align-items: center;
+
+    .ui.button#logout {
+        margin-top: 23px;
+        height: 36px;
     }
 }
