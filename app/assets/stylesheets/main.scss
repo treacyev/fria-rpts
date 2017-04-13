@@ -1,6 +1,18 @@
 $primary-color: #e67e22;
 $white: #fafafa;
 
+body {
+    background-color: #e9ebee !important;
+}
+
+.ui.celled.feed {
+    .event {
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: #dadada;
+    }
+}
+
 .ui.menu {
     background-color: $primary-color !important;
 }
@@ -40,4 +52,10 @@ $white: #fafafa;
         margin-top: 23px;
         height: 36px;
     }
+}
+
+.column.right.bordered {
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #dadada;
 }
