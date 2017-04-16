@@ -1,7 +1,5 @@
 FactoryGirl.define do
   factory :vote do
-    accepted false
-    resubmit false
-    rejected false
+    decision 1
   end
 end
