@@ -3,5 +3,6 @@ class LandingPageController < ApplicationController
         @proposals = Proposal.all
         @user = User.new
         @announcements = Announcement.where(:isDraft => false)
+        @current_time = Time.now.strftime('%Q')
     end
 end
