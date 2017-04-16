@@ -44,6 +44,6 @@ class VotesController < ApplicationController
 
   private
     def vote_params
-      params.require(:vote).permit(:accepted, :resubmit, :rejected)
+      params.require(:vote).permit(:decision)
     end
 end
