@@ -1,4 +1,5 @@
-var timeDiff;
+var serverTime;
+var today;
 $(document).ready(function(){
     $('.message .close')
     .on('click', function() {
@@ -9,15 +10,13 @@ $(document).ready(function(){
         console.log("hi");
     })
     ;
-    var serverTime = $('#time').data('time');
-    var localTime = +Date.now() / 1000;
-    timeDiff = serverTime - localTime;
-    startTime(timeDiff);
+    serverTime = $('#time').data('time') * 1000;
+    today = new Date();
+    startTime();
 });
 
 function startTime() {
-    var today = new Date();
-    today.setTime(+Date.now() + timeDiff);
+    today.setTime(serverTime);
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
@@ -25,7 +24,8 @@ function startTime() {
     s = checkTime(s);
     document.getElementById('time').innerHTML =
     h + ":" + m + ":" + s;
-    var t = setTimeout(startTime, 500);
+    serverTime = serverTime + 1000;
+    setTimeout(startTime, 1000);
 }
 
 function checkTime(i) {
