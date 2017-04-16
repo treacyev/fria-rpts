@@ -1,4 +1,4 @@
-
+var timeDiff;
 $(document).ready(function(){
     $('.message .close')
     .on('click', function() {
@@ -9,14 +9,15 @@ $(document).ready(function(){
         console.log("hi");
     })
     ;
-
-    startTime();
+    var serverTime = $('#time').data('time');
+    var localTime = +Date.now() / 1000;
+    timeDiff = serverTime - localTime;
+    startTime(timeDiff);
 });
 
 function startTime() {
     var today = new Date();
-    currentTime = $('#time').data('time');
-    today.setTime = currentTime;
+    today.setTime(+Date.now() + timeDiff);
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
