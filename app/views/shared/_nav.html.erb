@@ -30,8 +30,21 @@
 				<div class="item white">
 					Hello, <%= "#{current_user.first_name} #{current_user.last_name}" %>
 				</div>
-				<div id="logout">
-					<%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'ui button') %>  
+				<div class="ui secondary menu">
+					<a class="active item">Home</a>
+					<!-- FIX DROPDOWN BUTTON -->
+					<div class="ui dropdown item">
+						Proposals
+						<i class="dropdown icon"></i>
+						<div class="menu">
+							<div class="item">My Proposals</div>
+							<div class="item">Submit Proposal</div>
+						</div>
+					</div>
+					<a class="item">Settings</a>
+					<a> 
+						<%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'item') %>  
+					</a>
 				</div>
 			<% end %>
 		</div>

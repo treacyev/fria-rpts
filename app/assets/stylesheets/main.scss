@@ -16,6 +16,19 @@ body {
     }
 }
 
+.ui.orange.button {
+    margin-top: 20px;
+}
+
+strong {
+    color: red;
+}
+
+#form {
+    overflow: scroll;
+    overflow-x: hidden;    
+}
+
 footer {
 }
 
@@ -65,3 +78,4 @@ footer {
     border-right-width: 1px;
     border-right-color: #dadada;
 }
+
