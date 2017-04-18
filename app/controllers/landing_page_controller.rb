@@ -4,3 +4,4 @@ class LandingPageController < ApplicationController
         @user = User.new
     end
 end
+	
