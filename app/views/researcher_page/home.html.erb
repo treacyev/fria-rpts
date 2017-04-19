@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="ui attached segment">
-                <div class="ui large header center aligned">
+                <div class="ui header center aligned">
                     Recently Submitted Proposals
                 </div>
                 <div class="ui selection celled list">
@@ -59,7 +59,11 @@
                 </div>
             </div>
             <div class="ui button bottom orange attached">
-                See more submitted proposals ->
+                See more submitted proposals
+            </div>
+            <div class="ui basic segment center aligned">
+                <div class="ui small header" style="margin-bottom: 0;">Do you have a new proposal?</div>
+                <%= link_to 'Submit New Proposal', new_proposal_path, class: 'ui button orange' %>
             </div>
         </div>
     </div>

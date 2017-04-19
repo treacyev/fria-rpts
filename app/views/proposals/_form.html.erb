@@ -1,93 +1,98 @@
-<%= form_for @proposal do |f| %>
+<%= form_for @proposal, html: { class: 'ui form' } do |f| %>
 
   <% if @proposal.errors.any? %>
-    <div id="error_explanation">
-      <h2>
+    <div id="error_explanation" class="ui message">
+      <h2 class="ui header">
         <%= pluralize(@proposal.errors.count, "error") %> prohibited
-        this proposal from being saved:
+        this proposal from being submitted:
       </h2>
-      <ul>
+      <ul class="ui list">
         <% @proposal.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li class="item"><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <p>
-    <%= f.label :"Title of Project" %><br>
-    <%= f.text_field :title %>
-  </p>
+  <div class="required field">
+    <%= f.label :title, "Title of Project" %>
+    <%= f.text_field :title, placeholder: "Title of Project" %>
+  </div>
 
-  <p>
-    <%= f.label :"Principal Researcher"%><br>
-    <%= f.text_field :principalResearcher %>
-  </p>
+    <div class="required field">
+      <%= f.label :principalResearcher, "Principal Researcher"%>
+      <%= f.text_field :principalResearcher, placeholder: "Principal Researcher" %>
+    </div>
 
-  <p>
-    <%= f.label :"Name of Coresearchers"%><br>
-    <%= f.text_area :coresearchers %>
-  </p>
+    <div class="field">
+      <%= f.label :coresearchers, "Name of Coresearchers"%>
+      <%= f.text_area :coresearchers, placeholder: "Name of Coresearchers" %>
+    </div>
 
-  <p>
-    <%= f.label :"Total Research and Development Cost"%><br>
-    <%= f.text_field :rdCost %>
-  </p>
+  <div class="three fields">
+    <div class="field required">
+      <%= f.label :rdCost, "Total Research and Development Cost"%>
+      <%= f.text_field :rdCost, placeholder: "Total Research and Development Cost" %>
+    </div>
 
-  <p>
-    <%= f.label :"Source of External Funds"%><br>
-    <%= f.text_field :sourceExternal %>
-  </p>
+    <div class="field">
+      <%= f.label :sourceExternal, "Source of External Funds"%>
+      <%= f.text_field :sourceExternal, placeholder: "Source of External Funds" %>
+    </div>
 
-  <p>
-    <%= f.label :"Amount of External Funds"%><br>
-    <%= f.text_field :amountExternal %>
-  </p>
+    <div class="field">
+      <%= f.label :amountExternal, "Amount of External Funds"%>
+      <%= f.text_field :amountExternal, placeholder: "Amount of External Funds" %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :"Facilities, Materials, Staff within the Department or College (if any)"%><br>
-    <%= f.text_area :facMat %>
-  </p>
+  <div class="field">
+    <%= f.label :facMat, "Facilities, Materials, Staff within the Department or College (if any)"%>
+    <%= f.text_area :facMat, placeholder: "Facilities, Materials, Staff within the Department or College (if any)" %>
+  </div>
 
-  <p>
-    <%= f.label :"Objectives of the Project"%><br>
-    <%= f.text_area :objectives %>
-  </p>
+  <div class="two fields">
+    <div class="required field">
+      <%= f.label :objectives, "Objectives of the Project"%>
+      <%= f.text_area :objectives, placeholder: "Objectives of the Project" %>
+    </div>
+    <div class="required field">
+      <%= f.label :expectedOutputs, "Expected Outputs"%>
+      <%= f.text_area :expectedOutputs, placeholder: "Expected Outputs" %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :"Expected Outputs"%><br>
-    <%= f.text_area :expectedOutputs %>
-  </p>
+  <div class="required field">
+    <%= f.label :description, "Description of Work Done and Accomplishemnts (if project is in progress)"%>
+    <%= f.text_area :description, placeholder: "Description of Work Done and Accomplishments (if project is in progress)" %>
+  </div>
 
-  <p>
-    <%= f.label :"Description of Work Done and Accomplishemnts (if project is in progress)"%><br>
-    <%= f.text_area :description %>
-  </p>
+  <div class="required field">
+    <%= f.label :weeklyHours, "Estimated Number of Hours Per Week Devoted to this Project"%>
+    <%= f.text_field :weeklyHours, placeholder: "Estimated Number of Hours Per Week Devoted to this Project" %>
+  </div>
 
-  <p>
-    <%= f.label :"Estimated Number of Hours Per Week Devoted to this Project"%><br>
-    <%= f.text_field :weeklyHours %>
-  </p>
+  <div class="field">
+    <div class="ui checkbox">
+      <%= f.check_box :endorsement %>
+      <%= f.label :endorsement, "Have you attained endorsement from Department Head/Chairman?"%>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :"Have you attained endorsement from Department Head/Chairman?"%><br>
-    <%= f.check_box :endorsement %>
-  </p>
-
-  <p>
-    <%= f.label :"Have you submitted this proposal to any other funding agency? If yes, please state"%><br>
+<div class="field">
+  <div class="ui checkbox">
     <%= f.check_box :submitAgency %>
-  </p>
+    <%= f.label :submitAgency, "Have you submitted this proposal to any other funding agency? If yes, please state"%>
+  </div>
+</div>
 
-  <p>
-    <%= f.text_area :listAgency %>
-  </p>
-
-  <p>
+  <div class="required field">
+    <%= f.label :attachment, "Upload Proposal PDF"%>
     <%= f.file_field :attachment %>
-  </p>
+  </div>
 
+    <%= f.hidden_field :user_id, value: current_user.id %>
   <p>
-    <%= f.submit %>
+    <%= f.submit "Submit Proposal", class: 'ui button orange' %>
   </p>
 <% end %>

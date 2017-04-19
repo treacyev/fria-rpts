@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   resources :reviews
   resources :votes
   root :to => 'landing_page#index'
-  # get '/' => 'researcher_page#home', as: 'researcher_home'
 
-  get '/submit' => 'landing_page#researcher_submit', as: 'submit'	#DELETE LATER
+  get '/submit' => 'researcher_page#submit', as: 'submit_proposal'	#DELETE LATER
   get '/myproposals' => 'landing_page#researcher_proposals', as: 'myproposals' #DELETE LATER
   get '/viewproposal' => 'landing_page#researcher_view', as: 'viewproposal' #DELETE LATER
   get '/home' => 'landing_page#member_home', as: 'memberhome' #DELETE LATER

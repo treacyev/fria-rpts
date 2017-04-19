@@ -13,11 +13,12 @@ $(document).ready(function(){
     serverTime = $('#time').data('time') * 1000;
     today = new Date();
     startTime();
+
+    // $('.ui.checkbox')
+    //     .checkbox()
+    // ;
 });
 
-$('.ui.radio.checkbox')
-	.checkbox()
-;
 
 
 
