@@ -1,7 +1,7 @@
 <div class="ui fixed menu borderless">
 	<div class="ui container">
 		<div class="left menu">
-			<a class="item brand">
+			<%= link_to root_path, class: 'item brand' do %>
 				<%= image_tag 'coe_logo.png', class: 'ui tiny middle aligned image' %>
 				<h1 class="ui header white spaced">
 					FRIA
@@ -9,7 +9,7 @@
 					Faculty Research Incentive Award
 					</div>
 				</h1>
-			</a>
+			<% end%>
 		</div>
 		<div class="right menu">
 			<% unless user_signed_in? %>

@@ -6,79 +6,31 @@
                     Announcements
                 </div>
                 <div class="ui celled feed">
-                    <div class="event">
-                        <div class="content">
-                            <div class="summary">
-                                Announcement Header
-                            </div>
-                            <div class="meta">
-                                <div class="date">April 10, 2016 8:30PM PHT</div>
-                            </div>
-                            <div class="extra text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab culpa ratione minus facilis quae autem illum, qui assumenda voluptatem, hic vitae ad aliquam id cumque maiores, non veritatis doloremque laborum.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="event">
-                        <div class="content">
-                            <div class="summary">
-                                Announcement Header
-                            </div>
-                            <div class="meta">
-                                <div class="date">April 10, 2016 8:30PM PHT</div>
-                            </div>
-                            <div class="extra text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab culpa ratione minus facilis quae autem illum, qui assumenda voluptatem, hic vitae ad aliquam id cumque maiores, non veritatis doloremque laborum.
+                    <% @announcements.each do |announcement| %>
+                        <div class="event">
+                            <div class="content">
+                                <div class="summary">
+                                    <%= announcement.title %>
+                                </div>
+                                <div class="meta">
+                                    <div class="date"><%= announcement.created_at %></div>
+                                </div>
+                                <div class="extra text">
+                                    <%= announcement.text %>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="event">
-                        <div class="content">
-                            <div class="summary">
-                                Announcement Header
-                            </div>
-                            <div class="meta">
-                                <div class="date">April 10, 2016 8:30PM PHT</div>
-                            </div>
-                            <div class="extra text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab culpa ratione minus facilis quae autem illum, qui assumenda voluptatem, hic vitae ad aliquam id cumque maiores, non veritatis doloremque laborum.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="event">
-                        <div class="content">
-                            <div class="summary">
-                                Announcement Header
-                            </div>
-                            <div class="meta">
-                                <div class="date">April 10, 2016 8:30PM PHT</div>
-                            </div>
-                            <div class="extra text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab culpa ratione minus facilis quae autem illum, qui assumenda voluptatem, hic vitae ad aliquam id cumque maiores, non veritatis doloremque laborum.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="event">
-                        <div class="content">
-                            <div class="summary">
-                                Announcement Header
-                            </div>
-                            <div class="meta">
-                                <div class="date">April 10, 2016 8:30PM PHT</div>
-                            </div>
-                            <div class="extra text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab culpa ratione minus facilis quae autem illum, qui assumenda voluptatem, hic vitae ad aliquam id cumque maiores, non veritatis doloremque laborum.
-                            </div>
-                        </div>
-                    </div>
+                    <% end %>
                 </div>
             </div>
         </div>
         <div class="six wide column">
             <div class="ui basic segment center aligned">
                 <div class="ui statistic">
-                    <div class="value">
-                        5:30 PM
+                    <div class="value" id='time' data-time='<%= @current_time %>'>
+                    <script>
+                    
+                    </script>
                     </div>
                     <div class="label">
                         UP Official Time
@@ -124,9 +76,7 @@
             </div>
             <div class="ui basic segment center aligned">
                 <div class="ui small header">Are you a faculty of UP College of Engineering?</div>
-                <div class="ui button orange">
-                    Sign Up
-                </div>
+                <%= link_to 'Sign Up', new_user_registration_path, class: 'ui button orange' %>
             </div>
         </div>
     </div>

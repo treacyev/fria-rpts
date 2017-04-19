@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   authenticated do 	#DELETE LATER?
   	root :to => 'landing_page#researcher_home'
   end
+  resources :votes
   root :to => 'landing_page#index'
   get '/submit' => 'landing_page#researcher_submit', as: 'submit'	#DELETE LATER
   get '/myproposals' => 'landing_page#researcher_proposals', as: 'myproposals' #DELETE LATER
@@ -16,3 +17,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> c7c1d6c61b4ee04846bf33d1d592ea4453bd3861
