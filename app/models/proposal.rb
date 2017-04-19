@@ -1,4 +1,6 @@
 class Proposal < ApplicationRecord
+  before_create :set_status
+
   validates :title, presence: true
   validates :rdCost, presence: true, numericality: { only_float: true }
   validates_numericality_of :rdCost, greater_than_or_equal_to: 0
@@ -14,4 +16,8 @@ class Proposal < ApplicationRecord
   mount_uploader :attachment, AttachmentUploader
 
   belongs_to :user
+
+  def set_status
+    self.status = 0
+  end
 end

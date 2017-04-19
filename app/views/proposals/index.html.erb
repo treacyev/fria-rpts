@@ -1,31 +1,30 @@
-<h1>Proposal List</h1>
-
-<table>
-  <tr>
-    <th>Title of Project</th>
-    <th>Principal Researcher</th>
-    <th>Status of Proposal</th>
-    <th>Attachment</th>
-
-    <th>Created Date/time</th>
-    <th>Updated Date/time</th>
-  </tr>
-
-  <% @proposals.each do |proposal| %>
-    <tr>
-      <td><%= proposal.title %></td>
-      <td><%= proposal.principalResearcher %></td>
-      <td><%= proposal.status %></td>
-      <td><%= proposal.attachment %></td>
-      <td><%= proposal.created_at%></td>
-      <td><%= proposal.updated_at%></td>
-
-      <td><%= link_to "Download Attachment", proposal.attachment_url %></td>
-      <td><%= link_to 'Show', proposal_path(proposal) %></td>
-      <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
-      <td><%= link_to 'Delete', proposal_path(proposal),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="ui container grid center aligned">
+    <div class="row">
+        <div class="fourteen wide column right bordered">
+            <div class="ui segment">
+                <div class="ui medium header">
+                    My Proposals
+                </div>
+                <table class="ui orange striped selectable fixed single line celled table">
+                  <thead>
+                    <tr><th>Title</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr></thead>
+                  <tbody>
+                    <% @proposals.each do |proposal| %>
+                      <tr>
+                        <td><%= proposal.title %></td>
+                        <td><%= @proposal_status[proposal.status] %></td>
+                        <td>
+                          <%= link_to "View", proposal_path(proposal), class: "ui mini button" %>
+                          <%= link_to "Cancel", cancel_proposal_path(id: proposal.id), method: :post, class: "ui mini button" %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,11 @@
 class ProposalsController < ApplicationController
   def index
+    @proposal_status = ['Pending', 'Resubmit', 'Accepted', 'Canceled', 'Denied']
+    if current_user && current_user.type == "Researcher"
+      @proposals = Proposal.where(user_id: current_user.id)
+    else
       @proposals = Proposal.all
+    end
   end
 
   def show
@@ -33,6 +38,14 @@ class ProposalsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def cancel
+    @proposal = Proposal.find(params[:id])
+
+    @proposal.update_attribute(:status, -2)
+
+    redirect_to proposals_path
   end
 
   def destroy
