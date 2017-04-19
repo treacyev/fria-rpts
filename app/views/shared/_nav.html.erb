@@ -12,7 +12,7 @@
 			<% end%>
 		</div>
 		<div class="right menu">
-			<% unless user_signed_in? %>
+			<% if not user_signed_in? %>
 				<%= form_for(@user, :url => session_path(@user), :html => {class: "ui form", id: "login"}) do |f| %>
 					<div class="fields">
 						<div class="field">
@@ -26,24 +26,23 @@
 						<%= f.submit "Login", class: "ui button" %>
 					</div>
 				<% end %>
-			<% else %>
+			<% elsif current_user.type == "Researcher" %>
 				<div class="item white">
 					Hello, <%= "#{current_user.first_name} #{current_user.last_name}" %>
 				</div>
 				<div class="ui secondary menu">
-					<a class="active item">Home</a>
-					<!-- FIX DROPDOWN BUTTON -->
-					<div class="ui dropdown item">
+					<a class="item white">Home</a>
+					<div class="ui dropdown item white">
 						Proposals
 						<i class="dropdown icon"></i>
 						<div class="menu">
-							<div class="item">My Proposals</div>
-							<div class="item">Submit Proposal</div>
+							<div class="item white">My Proposals</div>
+							<div class="item white">Submit Proposal</div>
 						</div>
 					</div>
-					<a class="item">Settings</a>
+					<% # <a class="item white">Settings</a> %>
 					<a> 
-						<%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'item') %>  
+						<%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'item white') %>  
 					</a>
 				</div>
 			<% end %>
