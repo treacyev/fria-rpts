@@ -16,8 +16,3 @@ Rails.application.routes.draw do
   resources :announcements
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-
-<<<<<<< HEAD
-
-=======
->>>>>>> c7c1d6c61b4ee04846bf33d1d592ea4453bd3861
