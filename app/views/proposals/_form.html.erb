@@ -91,8 +91,12 @@
     <%= f.file_field :attachment %>
   </div>
 
-    <%= f.hidden_field :user_id, value: current_user.id %>
-  <p>
-    <%= f.submit "Submit Proposal", class: 'ui button orange' %>
-  </p>
+    <div class="field">
+      <div class="ui mini buttons">
+        <%= f.submit "Save as Draft", class: "ui button"%>
+        <div class="or"></div>
+        <%= f.submit "Submit", class: "ui positive button" %>
+      </div>
+    </div>
+    <%=  f.hidden_field :user_id, value: current_user.id %>
 <% end %>

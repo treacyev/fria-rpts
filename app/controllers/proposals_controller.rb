@@ -23,6 +23,12 @@ class ProposalsController < ApplicationController
   def create
     @proposal = Proposal.new(proposal_params)
 
+    if params[:commit] == "Save as Draft"
+      @proposal.is_draft = true
+    elsif params[:commit] == "Submit"
+      @proposal.is_draft = false
+    end
+    
     if @proposal.save
       redirect_to @proposal
     else

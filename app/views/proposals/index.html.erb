@@ -17,7 +17,11 @@
                     <% @proposals.each do |proposal| %>
                       <tr>
                         <td><%= proposal.title %></td>
+                        <% if proposal.is_draft%>
+                        <td> Draft </td>
+                        <% else %>
                         <td><%= @proposal_status[proposal.status] %></td>
+                        <% end %>
                         <td>
                           <%= link_to "View", proposal_path(proposal), class: "ui mini button" %>
                           <%= link_to "Cancel", cancel_proposal_path(id: proposal.id), method: :post, class: "ui mini button" %>
