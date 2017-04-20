@@ -58,9 +58,7 @@
                     <% end %>
                 </div>
             </div>
-            <div class="ui button bottom orange attached">
-                See more submitted proposals
-            </div>
+            <%= link_to "See more submitted proposals", proposals_path, class: "ui button bottom orange attached" %>
             <div class="ui basic segment center aligned">
                 <div class="ui small header" style="margin-bottom: 0;">Do you have a new proposal?</div>
                 <%= link_to 'Submit New Proposal', new_proposal_path, class: 'ui button orange' %>
