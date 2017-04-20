@@ -2,9 +2,9 @@ class ProposalsController < ApplicationController
   def index
     @proposal_status = ['Pending', 'Resubmit', 'Accepted', 'Canceled', 'Denied']
     if current_user && current_user.type == "Researcher"
-      @proposals = Proposal.where(user_id: current_user.id)
+      @proposals = Proposal.where(user_id: current_user.id).reverse
     else
-      @proposals = Proposal.all
+      @proposals = Proposal.where(status: 2).reverse
     end
   end
 

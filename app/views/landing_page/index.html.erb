@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="ui attached segment">
-                <div class="ui huge header center aligned">
+                <div class="ui header center aligned">
                     Accepted Proposals
                 </div>
                 <div class="ui selection celled list">
@@ -58,11 +58,9 @@
                     <% end %>
                 </div>
             </div>
-            <div class="ui button bottom orange attached">
-                See more accepted proposals ->
-            </div>
+            <%= link_to 'See more accepted proposals', proposals_path, class: 'ui button bottom orange attached'%>
             <div class="ui basic segment center aligned">
-                <div class="ui small header">Are you a faculty of UP College of Engineering?</div>
+                <div class="ui small header" style="margin-bottom: 0;">Are you a faculty of UP College of Engineering?</div>
                 <%= link_to 'Sign Up', new_user_registration_path, class: 'ui button orange' %>
             </div>
         </div>
