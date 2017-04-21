@@ -2,29 +2,42 @@
     <div class="row">
         <div class="fourteen wide column">
           <% if current_user %>
-            <div class="ui segment">
+            <div class="ui basic segment">
                 <div class="ui medium header">
                     <% if current_user.type == "Researcher" %>
                     My <% end %> Proposals
                 </div>
-                <table class="ui orange striped selectable fixed single line celled table">
+                <table class="ui orange striped selectable celled table">
                   <thead>
                     <tr><th>Title</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <th class="three wide">Status</th>
+                    <th class="four wide">Actions</th>
                   </tr></thead>
                   <tbody>
                     <% @proposals.each do |proposal| %>
-                      <tr>
-                        <td><%= proposal.title %></td>
+                        <% if proposal.status == 2 %>
+                        <tr class="positive">
+                        <% elsif proposal.status == -1 %>
+                        <tr class="negative">
+                        <% elsif proposal.status == 1 %>
+                        <tr class="warning">
+                        <% end %>
+                        <td>
+                          <div class="ui small header">
+                          <%= proposal.title %>
+                          </div>
+                        </td>
                         <% if proposal.is_draft%>
                         <td> Draft </td>
                         <% else %>
                         <td><%= @proposal_status[proposal.status] %></td>
                         <% end %>
                         <td>
-                          <%= link_to "View", proposal_path(proposal), class: "ui mini button" %>
-                          <%= link_to "Cancel", cancel_proposal_path(id: proposal.id), method: :post, class: "ui mini button" %>
+                          <%= link_to "View", proposal_path(proposal), class: "ui mini orange button" %>
+                          <% if proposal.status == 0 %>
+                            <%= link_to "Edit", edit_proposal_path(proposal), class: "ui primary mini button" %>
+                            <%= link_to "Cancel", cancel_proposal_path(id: proposal.id), method: :post, class: "ui negative mini button" %>
+                          <% end %>
                         </td>
                       </tr>
                     <% end %>
