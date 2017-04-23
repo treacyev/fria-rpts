@@ -1,6 +1,6 @@
 var serverTime;
 var today;
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
     $('.message .close')
     .on('click', function() {
         $(this)
@@ -12,7 +12,10 @@ $(document).ready(function(){
     ;
     serverTime = $('#time').data('time') * 1000;
     today = new Date();
-    startTime();
+
+    if($('#time').length){
+        startTime();
+    }
 
     // $('.ui.checkbox')
     //     .checkbox()

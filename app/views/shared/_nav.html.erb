@@ -26,7 +26,7 @@
 						<%= f.submit "Login", class: "ui button" %>
 					</div>
 				<% end %>
-			<% elsif current_user.type == "Researcher" %>
+			<% else %>
 				<div class="item white">
 					Hello, <%= "#{current_user.first_name} #{current_user.last_name}" %>
 				</div>
@@ -36,8 +36,8 @@
 						Proposals
 						<i class="dropdown icon"></i>
 						<div class="menu">
-							<div class="item white">My Proposals</div>
-							<div class="item white">Submit Proposal</div>
+							<%= link_to('My Proposals', proposals_path, class: 'item white') %>
+							<%= link_to('Submit Proposal', new_proposal_path, class: 'item white') %>
 						</div>
 					</div>
 					<% # <a class="item white">Settings</a> %>
