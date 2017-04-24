@@ -20,6 +20,19 @@ body {
     margin-top: 20px;
 }
 
+.proposal.content {
+    .ui.header{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .column {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    margin-bottom: 18px;
+}
+
 .mini.button {
     margin-top: 0 !important;
 }

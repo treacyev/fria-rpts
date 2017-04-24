@@ -43,7 +43,7 @@
                 </div>
                 <div class="ui selection celled list">
                     <% @proposals.each do |proposal| %>
-                        <div class="item">
+                        <%= link_to proposal, class: 'item' do %>
                             <div class="content">
                                 <div class="ui medium header"><%= proposal.title %>
                                     <div class="sub header">
@@ -54,7 +54,7 @@
                                     <%= proposal.description %>
                                 </div>
                             </div>
-                        </div>
+                        <% end %>
                     <% end %>
                 </div>
             </div>
