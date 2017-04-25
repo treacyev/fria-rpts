@@ -82,8 +82,13 @@
 <div class="field">
   <div class="ui checkbox">
     <%= f.check_box :submitAgency %>
-    <%= f.label :submitAgency, "Have you submitted this proposal to any other funding agency? If yes, please state"%>
+    <%= f.label :submitAgency, "Have you submitted this proposal to any other funding agency?"%>
   </div>
+</div>
+
+<div class="field">
+  <%= f.label :listAgency, "If yes, please state the agencies" %>
+  <%= f.text_area :listAgency, placeholder: "List of Agencies" %>
 </div>
 
   <div class="required field">
