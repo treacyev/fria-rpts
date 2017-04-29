@@ -38,7 +38,7 @@
             <div class="sub header">
             Name of Coresearchers:
             </div>
-            <%= @proposal.coresearchers %>
+            <%= @proposal.coresearchers.present? ? @proposal.coresearchers : 'N/A' %>
           </div>
         </div>
         <div class="column">
@@ -46,7 +46,7 @@
             <div class="sub header">
             Source of External Funds:
             </div>
-            <%= @proposal.sourceExternal ? @proposal.sourceExternal : 'N/A'%>
+            <%= @proposal.sourceExternal.present? ? @proposal.sourceExternal : 'N/A'%>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
             <div class="sub header">
             Facilities, Materials, Staff within the Department or College (if any):
             </div>
-            <%= @proposal.facMat ? @proposal.facMat : 'N/A'%>
+            <%= @proposal.facMat.present? ? @proposal.facMat : 'N/A'%>
           </div>
         </div>
         <div class="column">
@@ -65,7 +65,7 @@
             <div class="sub header">
             Amount of External Funds:
             </div>
-            <%= @proposal.amountExternal ? @proposal.amountExternal : 'N/A'%>
+            <%= @proposal.amountExternal.present? ? @proposal.amountExternal : 'N/A'%>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@
             <div class="sub header">
             Description of Work Done and Accomplishemnts (if project is in progress):
             </div>
-            <%= @proposal.description ? @proposal.description : 'N/A'%>
+            <%= @proposal.description.present? ? @proposal.description : 'N/A'%>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
             <div class="sub header">
             Objectives of the Project:
             </div>
-            <%= @proposal.objectives ? @proposal.objectives : 'N/A'%>
+            <%= @proposal.objectives.present? ? @proposal.objectives : 'N/A'%>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@
             <div class="sub header">
             Expected Outputs:
             </div>
-            <%= @proposal.expectedOutputs ? @proposal.expectedOutputs : 'N/A'%>
+            <%= @proposal.expectedOutputs.present? ? @proposal.expectedOutputs : 'N/A'%>
           </div>
         </div>
         <div class="column">
@@ -106,7 +106,7 @@
             <div class="sub header">
             Estimated Number of Hours Per Week Devoted to this Project:
             </div>
-            <%= @proposal.weeklyHours ? @proposal.weeklyHours : 'N/A'%>
+            <%= @proposal.weeklyHours.present? ? @proposal.weeklyHours : 'N/A'%>
           </div>
         </div>
       </div>
@@ -116,7 +116,7 @@
           <div class="ui tiny header">
             <div class="sub header">
             Have you attained endorsement from Department Head/Chairman?: 
-            <i class="icon <%= @proposal.endorsement ? 'checkmark': 'remove' %>"></i> 
+            <i class="icon <%= @proposal.endorsement.present? ? 'checkmark': 'remove' %>"></i> 
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@
           <div class="ui tiny header">
             <div class="sub header">
             Have you submitted this proposal to any other funding agency?: 
-            <i class="icon <%= @proposal.submitAgency ? 'checkmark': 'remove' %>"></i> 
+            <i class="icon <%= @proposal.submitAgency.present? ? 'checkmark': 'remove' %>"></i> 
             </div>
           </div>
         </div>
