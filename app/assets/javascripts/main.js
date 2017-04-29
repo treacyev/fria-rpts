@@ -25,9 +25,11 @@ $(document).on('turbolinks:load', function(){
         $(this).addClass('loading');
     });
 
+
+    $(".ui.button").removeClass('loading');
+
     $('.ui.dropdown').dropdown();
 });
-
 
 
 
