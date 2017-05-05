@@ -1,0 +1,19 @@
+current directory: /home/camille/Desktop/fria-rpts/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.11/ext/mri
+/home/camille/.rvm/rubies/ruby-2.3.1/bin/ruby -r ./siteconf20170426-13129-y5z2hf.rb extconf.rb
+creating Makefile
+
+current directory: /home/camille/Desktop/fria-rpts/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR=" clean
+
+current directory: /home/camille/Desktop/fria-rpts/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR="
+compiling bcrypt_ext.c
+compiling crypt_blowfish.c
+compiling crypt.c
+compiling wrapper.c
+compiling crypt_gensalt.c
+linking shared-object bcrypt_ext.so
+
+current directory: /home/camille/Desktop/fria-rpts/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.11/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -m 0755 bcrypt_ext.so ./.gem.20170426-13129-1qmc1ni

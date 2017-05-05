@@ -28,4 +28,11 @@ class LandingPageController < ApplicationController
 
     def member_archive #DELETE LATER
     end
+
+    def head_proposals #DELETE LATER
+    end
+
+    def head_home #DELETE LATER
+    end
+
 end

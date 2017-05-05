@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170505 21:12:52.911" generator="Robot 3.0.2 (Python 2.7.12 on linux2)">
+<suite source="/home/camille/Desktop/fria-rpts/robot_tests/demo/trial1.robot" id="s1" name="Trial1">
+<test id="s1-t1" name="User must sign in to check out">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://fria.herokuapp.com/</arg>
+<arg>firefox</arg>
+</arguments>
+<msg timestamp="20170505 21:12:53.090" level="INFO">Opening browser 'firefox' to base url 'http://fria.herokuapp.com/'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170505 21:12:53.111" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20170505 21:12:53.111" starttime="20170505 21:12:53.107"></status>
+</kw>
+<msg timestamp="20170505 21:12:53.111" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20170505 21:12:53.113" level="FAIL">WebDriverException: Message: 'geckodriver' executable needs to be in PATH. 
+</msg>
+<status status="FAIL" endtime="20170505 21:12:53.113" starttime="20170505 21:12:53.090"></status>
+</kw>
+<doc>This is some basic info about the whole suite</doc>
+<tags>
+<tag>Smoke</tag>
+</tags>
+<status status="FAIL" endtime="20170505 21:12:53.114" critical="yes" starttime="20170505 21:12:53.089">WebDriverException: Message: 'geckodriver' executable needs to be in PATH. 
+</status>
+</test>
+<doc>This is some basic info about the whole suite</doc>
+<status status="FAIL" endtime="20170505 21:12:53.124" starttime="20170505 21:12:52.917"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="1" pass="0">Smoke</stat>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="Trial1" pass="0">Trial1</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20170505 21:12:53.111" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+</errors>
+</robot>
