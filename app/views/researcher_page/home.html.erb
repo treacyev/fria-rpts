@@ -37,6 +37,23 @@
                     </div>
                 </div>
             </div>
+            <div class="ui segment basic center aligned" style="padding: 0">
+                <h2 class="ui tiny header" style="margin-bottom: 0">Submission Period: 
+                    <% if @submission_period.active %>
+                        <span class="green ui horizontal label">Ongoing</span>
+                    <% else %>
+                        <span class="red ui horizontal label">Finished</span>
+                    <% end %>
+
+                    <% if can? :toggle, @submission_period %>
+                        <% if @submission_period.active %>
+                            <%= link_to 'End Submission', toggle_submission_period_path, class: 'ui mini button red', onclick: "return toggle_alert();" %>
+                        <% else %>
+                            <%= link_to 'Start Submission', toggle_submission_period_path, class: 'ui mini button green', onclick: "return toggle_alert();" %>
+                        <% end %>
+                    <% end %>
+                </h2>
+            </div>
             <div class="ui attached segment">
                 <div class="ui header center aligned">
                     Recently Submitted Proposals

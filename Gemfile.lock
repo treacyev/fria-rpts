@@ -244,6 +244,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-controller-testing
+  responders
   rspec-collection_matchers
   rspec-rails (~> 3.4)
   sass-rails (~> 5.0)

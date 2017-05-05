@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Production Seed #
+SubmissionPeriod.create(active: true)
+# End of Production Seed #
+
 Announcement.create(title: 'Start of Submission Period', text: 'We are accepting proposal submissions as of today!', isDraft: false)
 Announcement.create(title: 'Scheduled maintenance: 05/13/1996', text: 'We will be performing a scheduled maintenance on the specified date', isDraft: false)
 Announcement.create(title: 'Deadline for final report submissions', text: 'Reminder for the requirement of final report', isDraft: false)

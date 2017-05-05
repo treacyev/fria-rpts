@@ -1,6 +1,6 @@
 var serverTime;
 var today;
-$(document).on('turbolinks:load', function(){
+$(document).ready(function(){
     $('.message .close')
     .on('click', function() {
         $(this)
@@ -31,7 +31,10 @@ $(document).on('turbolinks:load', function(){
     $('.ui.dropdown').dropdown();
 });
 
-
+function toggle_alert() {
+    location.reload();
+    return confirm('You are about to toggle the submission period, are you sure?');
+}
 
 function startTime() {
     today.setTime(serverTime);

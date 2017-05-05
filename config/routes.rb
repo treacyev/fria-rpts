@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   resources :proposals
   resources :reviews
   resources :votes
+
   root :to => 'landing_page#index'
 
   post '/proposal/cancel' => 'proposals#cancel', as: 'cancel_proposal'
+  get '/submission_period/toggle' => 'submission_periods#toggle', as: 'toggle_submission_period'
   get '/myproposals' => 'landing_page#researcher_proposals', as: 'myproposals' #DELETE LATER
   get '/viewproposal' => 'landing_page#researcher_view', as: 'viewproposal' #DELETE LATER
   get '/home' => 'landing_page#member_home', as: 'memberhome' #DELETE LATER

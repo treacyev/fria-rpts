@@ -37,6 +37,15 @@
                     </div>
                 </div>
             </div>
+            <div class="ui segment basic center aligned" style="padding: 0">
+                <h2 class="ui tiny header" style="margin-bottom: 0">Submission Period: 
+                    <% if @submission_period.active %>
+                        <span class="green ui horizontal label">Ongoing</span>
+                    <% else %>
+                        <span class="red ui horizontal label">Finished</span>
+                    <% end %>
+                </h2>
+            </div>
             <div class="ui attached segment">
                 <div class="ui header center aligned">
                     Accepted Proposals

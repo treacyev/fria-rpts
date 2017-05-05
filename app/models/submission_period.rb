@@ -1,0 +1,2 @@
+class SubmissionPeriod < ApplicationRecord
+end

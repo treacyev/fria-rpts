@@ -3,6 +3,7 @@ class LandingPageController < ApplicationController
         @user = User.new
         @announcements = Announcement.where(:isDraft => false)
         @current_time = Time.now.to_i
+        @submission_period = SubmissionPeriod.first
         if current_user && current_user.type == 'Researcher'
             @proposals = current_user.proposals.last(5).reverse
             render 'researcher_page/home'
