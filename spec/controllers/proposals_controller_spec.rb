@@ -31,7 +31,7 @@ RSpec.describe ProposalsController, :type => :controller do
   end
 
   describe 'POST create' do
-    describe  'with valid params' do
+    describe 'with valid params' do
       it 'creates a new Proposal' do
         expect{
         @proposal = FactoryGirl.create(:proposal, user: @user)
@@ -46,6 +46,19 @@ RSpec.describe ProposalsController, :type => :controller do
       it "shows the proposal created" do
         post :create, params: { :user_id => @user, :proposal => @proposal_attributes }
         expect(response.status).to eq(200)
+      end
+    end
+
+    describe 'with invalid params' do
+      it "does not save the new contact" do
+        expect{
+        post :create, params: { :user_id => @user, id: @proposal, proposal: FactoryGirl.attributes_for(:proposal, :title => nil, :user_id => @user)}
+      }.to_not change(Proposal,:count)
+      end
+
+      it "renders the 'new' template" do
+        post :create, params: { :user_id => @user, id: @proposal, proposal: FactoryGirl.attributes_for(:proposal, :title => nil, :user_id => @user)}
+        expect(response).to render_template('new')
       end
     end
   end
@@ -102,10 +115,15 @@ RSpec.describe ProposalsController, :type => :controller do
       expect(assigns(:proposal)).to eq(@proposal)
     end
 
-    it 'creates a new Proposal' do
+    it 'completely deletes a Proposal' do
       expect{
       delete :destroy, params: {id: @proposal}
       }.to change(Proposal, :count).by(-1)
+    end
+
+    it "redirects to proposals_path" do
+      delete :destroy, params: {id: @proposal}
+      expect(response).to redirect_to(proposals_url)
     end
 
   end
