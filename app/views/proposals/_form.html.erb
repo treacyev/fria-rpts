@@ -92,8 +92,13 @@
 </div>
 
   <div class="required field">
-    <%= f.label :attachment, "Upload Proposal PDF"%>
+    <%= f.label :attachment, "Upload Proposal (PDF)"%>
     <%= f.file_field :attachment, accept: '.pdf' %>
+  </div>
+
+  <div class="required field">
+    <%= f.label :recommendation, "Upload Recommendation (PDF)"%>
+    <%= f.file_field :recommendation, accept: '.pdf' %>
   </div>
 
     <div class="field">
