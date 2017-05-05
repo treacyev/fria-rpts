@@ -38,6 +38,12 @@ class ProposalsController < ApplicationController
   def update
     @proposal = Proposal.find(params[:id])
 
+    if params[:commit] == "Save as Draft"
+      @proposal.is_draft = true
+    elsif params[:commit] == "Submit"
+      @proposal.is_draft = false
+    end
+
     if @proposal.update(proposal_params)
       redirect_to @proposal
     else
