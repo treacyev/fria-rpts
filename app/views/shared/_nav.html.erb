@@ -23,7 +23,7 @@
 							<%= f.label :password %>
 							<%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
 						</div>
-						<%= f.submit "Login", class: "ui button" %>
+						<%= f.submit "Login", class: "ui button", id: "login_button" %>
 					</div>
 				<% end %>
 			<% else %>
@@ -46,7 +46,7 @@
 					<% end %>
 					<% # <a class="item white">Settings</a> %>
 					<a> 
-						<%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'item white') %>  
+						<%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'item white', id: 'logout_button') %>  
 					</a>
 				</div>
 			<% end %>

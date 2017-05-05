@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170505 07:25:23.305" generator="Robot 3.0.2 (Python 2.7.12 on linux2)">
+<suite source="/home/treacyev/Documents/CS192/fria-rpts/announcements.robot" id="s1" name="Announcements">
+<test id="s1-t1" name="Announcements">
+<kw name="Open Browser To Login Page" library="resource">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20170505 07:25:23.398" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:3000/'</msg>
+<status status="PASS" endtime="20170505 07:25:28.731" starttime="20170505 07:25:23.398"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20170505 07:25:28.952" starttime="20170505 07:25:28.732"></status>
+</kw>
+<kw name="Set Selenium Speed" library="Selenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20170505 07:25:28.955" starttime="20170505 07:25:28.953"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="resource">
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>FRIA</arg>
+</arguments>
+<msg timestamp="20170505 07:25:29.036" level="INFO">Page title is 'FRIA'.</msg>
+<status status="PASS" endtime="20170505 07:25:29.037" starttime="20170505 07:25:28.957"></status>
+</kw>
+<status status="PASS" endtime="20170505 07:25:29.038" starttime="20170505 07:25:28.956"></status>
+</kw>
+<status status="PASS" endtime="20170505 07:25:29.039" starttime="20170505 07:25:23.397"></status>
+</kw>
+<kw name="Input Username" library="resource">
+<arguments>
+<arg>mail1@example.com</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20170505 07:25:29.048" level="INFO">Typing text 'mail1@example.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20170505 07:25:29.666" starttime="20170505 07:25:29.047"></status>
+</kw>
+<status status="PASS" endtime="20170505 07:25:29.666" starttime="20170505 07:25:29.045"></status>
+</kw>
+<kw name="Input Password" library="resource">
+<arguments>
+<arg>password</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20170505 07:25:29.669" level="INFO">Typing text 'password' into text field 'user_password'</msg>
+<status status="PASS" endtime="20170505 07:25:30.123" starttime="20170505 07:25:29.668"></status>
+</kw>
+<status status="PASS" endtime="20170505 07:25:30.123" starttime="20170505 07:25:29.667"></status>
+</kw>
+<kw name="Submit Credentials" library="resource">
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>login_button</arg>
+</arguments>
+<msg timestamp="20170505 07:25:30.127" level="INFO">Clicking button 'login_button'.</msg>
+<status status="PASS" endtime="20170505 07:25:32.383" starttime="20170505 07:25:30.125"></status>
+</kw>
+<status status="PASS" endtime="20170505 07:25:32.384" starttime="20170505 07:25:30.125"></status>
+</kw>
+<kw name="Check Announcements" library="resource">
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>${WELCOME URL}</arg>
+</arguments>
+<msg timestamp="20170505 07:25:32.479" level="INFO">Current location is 'http://localhost:3000/'.</msg>
+<status status="PASS" endtime="20170505 07:25:32.480" starttime="20170505 07:25:32.385"></status>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>FRIA</arg>
+</arguments>
+<msg timestamp="20170505 07:25:32.489" level="INFO">Page title is 'FRIA'.</msg>
+<status status="PASS" endtime="20170505 07:25:32.489" starttime="20170505 07:25:32.480"></status>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>Signed in successfully.</arg>
+</arguments>
+<msg timestamp="20170505 07:25:32.627" level="INFO">Current page contains text 'Signed in successfully.'.</msg>
+<status status="PASS" endtime="20170505 07:25:32.627" starttime="20170505 07:25:32.490"></status>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>Announcements</arg>
+</arguments>
+<msg timestamp="20170505 07:25:32.698" level="INFO">Current page contains text 'Announcements'.</msg>
+<status status="PASS" endtime="20170505 07:25:32.699" starttime="20170505 07:25:32.627"></status>
+</kw>
+<status status="PASS" endtime="20170505 07:25:32.699" starttime="20170505 07:25:32.384"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170505 07:25:32.889" starttime="20170505 07:25:32.700"></status>
+</kw>
+<status status="PASS" endtime="20170505 07:25:32.889" critical="yes" starttime="20170505 07:25:23.397"></status>
+</test>
+<doc>A test suite with a single test for valid login.
+
+This test has a workflow that is created using keywords in
+the imported resource file.</doc>
+<status status="PASS" endtime="20170505 07:25:32.896" starttime="20170505 07:25:23.306"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Announcements" pass="1">Announcements</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
