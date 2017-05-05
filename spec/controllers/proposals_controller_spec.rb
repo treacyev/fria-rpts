@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pp'
 
 RSpec.describe ProposalsController, :type => :controller do
   before :each do
@@ -41,18 +42,14 @@ RSpec.describe ProposalsController, :type => :controller do
       expect(assigns(:proposal)).to eq(@proposal)
     end
 
-    it "changes the value of status" do
-      put :update, params: {
-        :user_id => @user,
-        :id => @proposal.id,
-        :proposal => @proposal_status_update_attributes
+    it "changes the status of the proposal" do
+      put :update, params:{
+        id: @proposal,
+        proposal: FactoryGirl.attributes_for(:proposal, status: -2)
       }
-      expect(ProposalsController.cancel).to change{@proposal}.by(-2)
+      @proposal.reload
+      expect(@proposal.status).to eq(-2)
     end
 
   end
-
-
-
-
 end
