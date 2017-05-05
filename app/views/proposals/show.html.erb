@@ -133,15 +133,27 @@
         </div>
       </div>
 
-     <!--  <p>
-        <strong>List of Agencies</strong>
-        <%= @proposal.listAgency %>
-      </p> -->
+      <div class="one column row">
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            List of Agencies:
+            </div>
+            <%= @proposal.listAgency.present? ? @proposal.listAgency : 'N/A'%>
+          </div>
+        </div>
+      </div>
+      
    
-      <div class="three column row" style="margin-bottom: 10px;">
-        <div class="column centered">
+      <div class="row centered" style="margin-bottom: 10px;">
+        <div class="six wide column right aligned">
           <%= link_to @proposal.attachment.url, class: 'ui mini button green' do %>
-            Download Proposal PDF <i class="icon arrow down"></i>
+            Download Proposal <i class="icon arrow down"></i>
+          <% end %>
+        </div>
+        <div class="six wide column">
+          <%= link_to @proposal.recommendation.url, class: 'ui mini button green' do %>
+            Download Recommendation <i class="icon arrow down"></i>
           <% end %>
         </div>
       </div>

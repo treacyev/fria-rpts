@@ -12,8 +12,10 @@ class Proposal < ApplicationRecord
   validates :endorsement, :inclusion => {:in => [true, false]}
   validates :submitAgency, :inclusion => {:in => [true, false]}
   validates :attachment, presence: true
+  validates :recommendation, presence: true
 
   mount_uploader :attachment, AttachmentUploader
+  mount_uploader :recommendation, RecommendationUploader
 
   belongs_to :user
 
