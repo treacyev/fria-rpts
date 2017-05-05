@@ -31,15 +31,19 @@
 					Hello, <%= "#{current_user.first_name} #{current_user.last_name}" %>
 				</div>
 				<div class="ui secondary menu">
-					<a class="item white">Home</a>
-					<div class="ui dropdown item white">
-						Proposals
-						<i class="dropdown icon"></i>
-						<div class="menu">
-							<%= link_to('My Proposals', proposals_path, class: 'item white') %>
-							<%= link_to('Submit Proposal', new_proposal_path, class: 'item white') %>
+					<%= link_to 'Home', root_path, class: 'item white' %>
+					<% if current_user.type == 'Researcher '%>
+						<div class="ui dropdown item white">
+							Proposals
+							<i class="dropdown icon"></i>
+							<div class="menu">
+								<%= link_to('My Proposals', proposals_path, class: 'item white') %>
+								<%= link_to('Submit Proposal', new_proposal_path, class: 'item white') %>
+							</div>
 						</div>
-					</div>
+					<% else %>
+						<%= link_to('Proposals', proposals_path, class: 'item white') %>
+					<% end %>
 					<% # <a class="item white">Settings</a> %>
 					<a> 
 						<%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'item white') %>  

@@ -37,10 +37,10 @@ class Ability
       can :update, Proposal, is_draft: true
       can :cancel, Proposal, is_draft: true
       can :cancel, Proposal, status: 0
-    elsif user.type == "Committee Member"
+    elsif user.type == "CommitteeMember"
       can :index, Proposal
       can :read, Proposal
-    elsif user.type == "Committee Head"
+    elsif user.type == "CommitteeHead"
       can :index, Proposal
       can :read, Proposal      
     elsif user.type == "Dean"

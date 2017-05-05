@@ -43,7 +43,7 @@
                 </div>
                 <div class="ui selection celled list">
                     <% @proposals.each do |proposal| %>
-                        <div class="item">
+                        <%= link_to proposal, class: 'item' do %>
                             <div class="content">
                                 <div class="ui medium header"><%= proposal.title %>
                                     <div class="sub header">
@@ -54,15 +54,17 @@
                                     <%= proposal.description %>
                                 </div>
                             </div>
-                        </div>
+                        <% end %>
                     <% end %>
                 </div>
             </div>
             <%= link_to "See more submitted proposals", proposals_path, class: "ui button bottom orange attached" %>
+            <% if can? :create, Proposal %>
             <div class="ui basic segment center aligned">
                 <div class="ui small header" style="margin-bottom: 0;">Do you have a new proposal?</div>
                 <%= link_to 'Submit New Proposal', new_proposal_path, class: 'ui button orange' %>
             </div>
+            <% end %>
         </div>
     </div>
 </div>
