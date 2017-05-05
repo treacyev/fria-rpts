@@ -1,15 +1,13 @@
 class ProposalsController < ApplicationController
   def index
     @proposal_status = ['Pending', 'Resubmit', 'Accepted', 'Canceled', 'Denied']
-    if current_user && current_user.type == "Researcher"
-      @proposals = Proposal.where(user_id: current_user.id).reverse
-    else
-      @proposals = Proposal.where(status: 2).reverse
-    end
+    authorize! :index, Proposal
+    @proposals = Proposal.accessible_by(current_ability).reverse
   end
 
   def show
     @proposal = Proposal.find(params[:id])
+    authorize! :read, @proposal
   end
 
   def new
@@ -18,6 +16,7 @@ class ProposalsController < ApplicationController
 
   def edit
     @proposal = Proposal.find(params[:id])
+    authorize! :update, @proposal
   end
 
   def create
@@ -48,7 +47,7 @@ class ProposalsController < ApplicationController
 
   def cancel
     @proposal = Proposal.find(params[:id])
-
+    authorize! :cancel, @proposal
     @proposal.update_attribute(:status, -2)
 
     redirect_to proposals_path
