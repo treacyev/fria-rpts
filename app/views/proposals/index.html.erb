@@ -34,8 +34,10 @@
                         <% end %>
                         <td>
                           <%= link_to "View", proposal_path(proposal), class: "ui mini orange button" %>
-                          <% if proposal.status == 0 %>
+                          <% if can? :update, proposal %>
                             <%= link_to "Edit", edit_proposal_path(proposal), class: "ui primary mini button" %>
+                          <% end %>
+                          <% if can? :cancel, proposal %>
                             <%= link_to "Cancel", cancel_proposal_path(id: proposal.id), method: :post, class: "ui negative mini button" %>
                           <% end %>
                         </td>
@@ -46,15 +48,15 @@
             </div>
             <% else %>
               <div class="ui medium header">Accepted Proposals</div>
-              <div class="ui segment">
-                <div class="ui selection divided list">
+              <div class="ui segment text">
+                <div class="ui divided list">
                   <% @proposals.each do |proposal| %>
-                    <%= link_to proposal, class: "item" do %>
+                    <div class="item">
                       <div class="content">
                         <div class="header"><%= proposal.title %></div>
-                        <%= proposal.description %>
+                        <%= proposal.principalResearcher %>
                       </div>
-                    <% end %>
+                    </div>
                   <% end %>
                 </div>
               </div>
