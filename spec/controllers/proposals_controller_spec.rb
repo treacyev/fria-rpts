@@ -125,7 +125,6 @@ RSpec.describe ProposalsController, :type => :controller do
       delete :destroy, params: {id: @proposal}
       expect(response).to redirect_to(proposals_url)
     end
-
   end
 
 end
