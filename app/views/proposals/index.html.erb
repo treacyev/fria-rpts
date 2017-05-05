@@ -10,6 +10,9 @@
                 <table class="ui orange striped selectable celled table">
                   <thead>
                     <tr><th>Title</th>
+                    <% if can? :index, Proposal %>
+                      <th>Pricinipal Researcher</th>
+                    <% end %>
                     <th class="three wide">Status</th>
                     <th class="four wide">Actions</th>
                   </tr></thead>
@@ -27,6 +30,11 @@
                           <%= proposal.title %>
                           </div>
                         </td>
+                        <% if can? :index, Proposal %>
+                          <td>
+                            <%= proposal.principalResearcher %>
+                          </td>
+                        <% end %>
                         <% if proposal.is_draft%>
                         <td> Draft </td>
                         <% else %>
