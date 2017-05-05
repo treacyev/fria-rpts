@@ -1,4 +1,54 @@
-<!-- NO POPUP YET -->
+<div class="ui small modal">
+  <div class="ui large header center aligned">Vote</div>
+  <i class="close icon"></i>
+  <div class="content">
+    <div class="ui container grid">
+      <div class="row">
+          <div class="six wide column right bordered">
+              <div class="ui small header">Add Vote</div>
+              <div class="ui form">
+                <div class="grouped fields">
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="vote" checked="" tabindex="0" class="hidden">
+                      <label>Accept</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="vote" tabindex="0" class="hidden">
+                      <label>Reject</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="vote" tabindex="0" class="hidden">
+                      <label>Resubmit</label>
+                    </div>
+                  </div>
+                </div>
+                <button class="ui mini positive button">Vote</button>
+              </div>
+          </div>
+          <div class="ten wide column">
+             <div class="ui small header center aligned">Comments</div>
+             <div class="ui form">
+              <div class="field">
+                <textarea rows="2"></textarea>
+              </div>
+              <button class="ui mini button right floated">Submit</button>
+            </div>
+            <br>
+            <div class="ui basic segment center aligned">
+              <div class="ui small header">Review</div>
+              <button class="ui mini orange button">Upload PDF Review</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="ui container grid center aligned">
     <div class="row">
         <div class="fourteen wide column right bordered">
@@ -46,3 +96,11 @@
         </div>
     </div>
 </div>
+
+<script>
+  $('.ui.radio.checkbox').checkbox();
+
+  $('.ui.small.modal')
+    .modal('attach events', '.ui.positive.mini.button', 'show')
+  ;
+</script>  
