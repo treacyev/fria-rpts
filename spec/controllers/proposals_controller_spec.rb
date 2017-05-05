@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pp'
 
 RSpec.describe ProposalsController, :type => :controller do
   before :each do
@@ -10,6 +9,27 @@ RSpec.describe ProposalsController, :type => :controller do
     @proposal_status_update_attributes = FactoryGirl.attributes_for(:proposal, :status => -2, :user_id => @user)
   end
 
+  describe "GET show" do
+    it "assigns the requested proposal as @proposal" do
+      get :show, params: { :user_id => @proposal, :id => @proposal }
+      expect(assigns(:proposal)).to eq(@proposal)
+    end
+  end
+
+  describe "GET new" do
+     it "assigns a new proposal for a user" do
+      get :new, params: { :user_id => @user }
+      expect(assigns(:proposal)).to be_a_new(Proposal)
+    end
+  end
+
+  describe "GET edit" do
+    it "assigns the requested proposal as @user.proposal" do
+      get :edit, params: { :user_id => @user, :id => @proposal }
+      expect(assigns(:proposal)).to eq(@proposal)
+   end
+  end
+
   describe 'POST create' do
     describe  'with valid params' do
       it 'creates a new Proposal' do
@@ -17,13 +37,37 @@ RSpec.describe ProposalsController, :type => :controller do
         @proposal = FactoryGirl.create(:proposal, user: @user)
         }.to change(Proposal, :count).by(1)
       end
+
+      it "assigns a newly created proposal as @proposal" do
+        post :create, params: { :user_id => @user, :proposal => @proposal_attributes }
+        expect(assigns(:proposal)).to be_a(Proposal)
+      end
+
+      it "shows the proposal created" do
+        post :create, params: { :user_id => @user, :proposal => @proposal_attributes }
+        expect(response.status).to eq(200)
+      end
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested proposal as @proposal" do
-      get :show, params: { :user_id => @proposal, :id => @proposal }
-      expect(assigns(:proposal)).to eq(@proposal)
+  describe "PUT update" do
+    describe 'with valid params' do
+      it "assigns the requested proposal as @user.proposal" do
+        get :edit, params: { :user_id => @user, :id => @proposal }
+        expect(assigns(:proposal)).to eq(@proposal)
+      end
+
+      it "shows the proposal created" do
+        post :create, params: { :user_id => @user, :proposal => @proposal_attributes }
+        expect(response.status).to eq(200)
+      end
+    end
+
+    describe "with invalid params"do
+      it "renders the 'edit' template" do
+        put :update, params: { :user_id => @user, id: @proposal, proposal: FactoryGirl.attributes_for(:proposal, :title => nil, :user_id => @user)}
+        expect(response).to render_template('edit')
+      end
     end
   end
 
@@ -50,6 +94,20 @@ RSpec.describe ProposalsController, :type => :controller do
       @proposal.reload
       expect(@proposal.status).to eq(-2)
     end
+  end
+
+  describe "destroy" do
+    it "assigns the requested proposal as @proposal" do
+      get :show, params: { :user_id => @proposal, :id => @proposal }
+      expect(assigns(:proposal)).to eq(@proposal)
+    end
+
+    it 'creates a new Proposal' do
+      expect{
+      delete :destroy, params: {id: @proposal}
+      }.to change(Proposal, :count).by(-1)
+    end
 
   end
+
 end
