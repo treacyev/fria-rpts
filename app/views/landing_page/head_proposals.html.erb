@@ -1,4 +1,70 @@
-<!-- NO POPUP YET -->
+ <div class="ui small modal">
+  <div class="ui large header center aligned">Vote</div>
+  <i class="close icon"></i>
+  <div class="content">
+    <div class="ui container grid">
+      <div class="row">
+          <div class="six wide column right bordered">
+              <div class="ui small header">Add Vote</div>
+              <div class="ui form">
+                <div class="grouped fields">
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="vote" checked="" tabindex="0" class="hidden">
+                      <label>Accept</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="vote" tabindex="0" class="hidden">
+                      <label>Reject</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="vote" tabindex="0" class="hidden">
+                      <label>Resubmit</label>
+                    </div>
+                  </div>
+                </div>
+                <button class="ui mini positive button">Vote</button>
+              </div>
+          </div>
+          <div class="ten wide column">
+             <div class="ui small header center aligned">Comments</div>
+             <div class="ui form">
+              <div class="field">
+                <textarea rows="2"></textarea>
+              </div>
+              <button class="ui mini button right floated">Submit</button>
+            </div>
+            <br>
+            <div class="ui basic segment ">
+              <div class="ui center aligned small header">Reviews of Committee Members</div>
+              <div class="ui left aligned relaxed divided list">
+                <div class="item">
+                  <div class="content">
+                    <a class="header">Comm_Mem1_review.pdf</a>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="content">
+                    <a class="header">Comm_Mem2_review.pdf</a>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="content">
+                    <a class="header">Comm_Mem3_review.pdf</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="ui container grid center aligned">
     <div class="row">
         <div class="fourteen wide column right bordered">
@@ -41,8 +107,7 @@
                       <td><h5>Accept</h5></td>
                       <td>
                         <div class="ui small vertical buttons">
-                          <button class="ui blue button">Reviews</button>
-                          <button class="ui red button">Download</button>
+                          <button class="ui green button">Download</button>
                           <button class="ui orange button">Vote</button>
                         </div>
                       </td>
@@ -73,8 +138,7 @@
                       <td><h5>Pending</h5></td>
                       <td>
                         <div class="ui small vertical buttons">
-                          <button class="ui blue button">Reviews</button>
-                          <button class="ui red button">Download</button>
+                          <button class="ui green button">Download</button>
                           <button class="ui orange button">Vote</button>
                         </div>
                       </td>
@@ -85,3 +149,10 @@
         </div>
     </div>
 </div>
+
+<script>
+
+  $('.ui.small.modal')
+    .modal('attach events', '.ui.orange.button', 'show')
+  ;
+</script>  
