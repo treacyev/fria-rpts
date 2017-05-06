@@ -32,12 +32,12 @@
 				</div>
 				<div class="ui secondary menu">
 					<%= link_to 'Home', root_path, class: 'item white' %>
-					<% if current_user.type == 'Researcher' %>
+					<% if current_user.type == 'Researcher' && @submission_period.active%>
 						<div class="ui dropdown item white">
 							Proposals
 							<i class="dropdown icon"></i>
 							<div class="menu">
-								<%= link_to('My Proposals', proposals_path, class: 'item white') %>
+								<%= link_to('Proposals', proposals_path, class: 'item white') %>
 								<%= link_to('Submit Proposal', new_proposal_path, class: 'item white') %>
 							</div>
 						</div>
