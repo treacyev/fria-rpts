@@ -51,7 +51,7 @@
 
 <div class="ui container grid center aligned">
     <div class="row">
-        <div class="fourteen wide column right bordered">
+        <div class="fourteen wide column">
             <div class="ui segment">
                 <div class="ui medium header">
                     Proposals
@@ -59,8 +59,8 @@
                 <table class="ui orange striped selectable fixed single line celled table">
                   <thead>
                     <tr><th>Title</th>
-                    <th>Vote Status</th>
                     <th>Author</th>
+                    <th>Vote Status</th>
                     <th>Actions</th>
                   </tr></thead>
                   <tbody>
@@ -70,9 +70,9 @@
                       <td><i class="icon checkmark"></i>Done</td>
                       <td>
                         <button class="ui mini button">
-                          Download
+                          View
                         </button>
-                        <button class="ui positive mini button">
+                        <button class="ui orange mini button">
                           Vote  <!-- can still edit vote as long as committee head hasn't voted -->
                         </button>
                       </td>
@@ -83,9 +83,9 @@
                       <td>Pending</td>
                       <td>
                         <button class="ui mini button">
-                          Download
+                          View
                         </button>
-                        <button class="ui positive mini button">
+                        <button class="ui orange mini button">
                           Vote
                         </button>
                       </td>
@@ -101,6 +101,6 @@
   $('.ui.radio.checkbox').checkbox();
 
   $('.ui.small.modal')
-    .modal('attach events', '.ui.positive.mini.button', 'show')
+    .modal('attach events', '.ui.orange.mini.button', 'show')
   ;
 </script>  
