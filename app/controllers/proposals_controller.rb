@@ -12,6 +12,7 @@ class ProposalsController < ApplicationController
 
   def new
     @proposal = Proposal.new
+    authorize! :new, @proposal
   end
 
   def edit
@@ -21,6 +22,7 @@ class ProposalsController < ApplicationController
 
   def create
     @proposal = Proposal.new(proposal_params)
+    authorize! :create, @proposal
 
     if params[:commit] == "Save as Draft"
       @proposal.is_draft = true
@@ -55,6 +57,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find(params[:id])
     authorize! :cancel, @proposal
     @proposal.update_attribute(:status, -2)
+    @proposal.update_attribute(:is_draft, false)
 
     redirect_to proposals_path
   end

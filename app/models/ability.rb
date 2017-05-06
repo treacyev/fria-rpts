@@ -33,8 +33,11 @@ class Ability
     if user.type == "Researcher"
       can :index, Proposal, user_id: user.id
       can :read, Proposal, user_id: user.id
-      can :create, Proposal
-      can :update, Proposal, is_draft: true
+      if SubmissionPeriod.first.active
+        can :create, Proposal
+        can :new, Proposal
+        can :update, Proposal, is_draft: true
+      end
       can :cancel, Proposal, is_draft: true
       can :cancel, Proposal, status: 0
     elsif user.type == "CommitteeMember"
