@@ -7,26 +7,27 @@
                 <div class="ui large header center aligned">
                     Archive
                 </div>
-                <div class="ui accordion">
-                  <div class="title">
+                <div class="ui styled accordion">
+                  <div class="title" id="accordion_title">
                     <i class="dropdown icon"></i>
                     Academic Year 2016 - 2017
                   </div>
                   <div class="content">
                     <p class="transition hidden">
-                        <div class="ui bulleted list">
+                        <div class="ui middle aligned relaxed divided list">
+                          <div class="item">Proposal Title</div>
                           <div class="item">Proposal Title</div>
                           <div class="item">Proposal Title</div>
                         </div>
                     </p>
                   </div>
-                  <div class="title">
+                  <div class="title" id="accordion_title">
                     <i class="dropdown icon"></i>
                     Academic Year 2014 - 2015
                   </div>
                   <div class="content">
                     <p class="transition hidden">
-                      <div class="ui bulleted list">
+                      <div class="ui middle aligned relaxed divided list">
                           <div class="item">Proposal Title</div>
                           <div class="item">Proposal Title</div>
                         </div>
@@ -42,7 +43,5 @@
 <script src="js/vendor/jquery-1.11.2.min.js"></script>
 
 <script>
-  $(document).ready(function(){
-      $('.ui.accordion').accordion();
-  });
+  $('.ui.styled.accordion').accordion();
 </script>
