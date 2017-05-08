@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   def submission_period
     @submission_period = SubmissionPeriod.first
   end
+  
   def login
     @user = User.new
   end

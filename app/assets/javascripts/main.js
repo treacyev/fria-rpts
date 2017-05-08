@@ -36,6 +36,11 @@ function toggle_alert() {
     return confirm('You are about to toggle the submission period, are you sure?');
 }
 
+function submission_alert() {
+    this.removeClass('loading');
+    return confirm('You can only submit once per submission period, are you sure?');
+}
+
 function startTime() {
     today.setTime(serverTime);
     var h = today.getHours();

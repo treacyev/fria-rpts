@@ -26,8 +26,12 @@ class ProposalsController < ApplicationController
 
     if params[:commit] == "Save as Draft"
       @proposal.is_draft = true
-    elsif params[:commit] == "Submit"
+    elsif params[:commit] == "Submit" && !current_user.submitted
       @proposal.is_draft = false
+      current_user.submitted = true
+      current_user.save
+    elsif params[:commit] == "Submit" && current_user.submitted
+      flash[:negative] = "You have already submitted a proposal this submission period."
     end
     
     if @proposal.save
@@ -44,6 +48,8 @@ class ProposalsController < ApplicationController
       @proposal.is_draft = true
     elsif params[:commit] == "Submit"
       @proposal.is_draft = false
+      current_user.submitted = true
+      current_user.save
     end
 
     if @proposal.update(proposal_params)
