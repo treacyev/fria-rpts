@@ -3,7 +3,7 @@ class Proposal < ApplicationRecord
 
   validates :title, presence: true
   validates :rdCost, presence: true, numericality: { only_float: true }
-  validates_numericality_of :rdCost, greater_than_or_equal_to: 0
+  validates_numericality_of :rdCost, greater_than_or_equal_to: 0, less_than_or_equal_to: 5000000
   validates :objectives, presence: true
   validates :principalResearcher, presence: true
   validates :expectedOutputs, presence: true

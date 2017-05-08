@@ -29,6 +29,8 @@ $(document).ready(function(){
     $(".ui.button").removeClass('loading');
 
     $('.ui.dropdown').dropdown();
+
+    $('.ui.radio.checkbox').checkbox();
 });
 
 function toggle_alert() {
