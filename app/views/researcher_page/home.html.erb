@@ -37,13 +37,30 @@
                     </div>
                 </div>
             </div>
+            <div class="ui segment basic center aligned" style="padding: 0">
+                <h2 class="ui tiny header" style="margin-bottom: 0">Submission Period: 
+                    <% if @submission_period.active %>
+                        <span class="green ui horizontal label">Ongoing</span>
+                    <% else %>
+                        <span class="red ui horizontal label">Finished</span>
+                    <% end %>
+
+                    <% if can? :toggle, @submission_period %>
+                        <% if @submission_period.active %>
+                            <%= link_to 'End Submission', toggle_submission_period_path, class: 'ui mini button red', onclick: "return toggle_alert();" %>
+                        <% else %>
+                            <%= link_to 'Start Submission', toggle_submission_period_path, class: 'ui mini button green', onclick: "return toggle_alert();" %>
+                        <% end %>
+                    <% end %>
+                </h2>
+            </div>
             <div class="ui attached segment">
                 <div class="ui header center aligned">
                     Recently Submitted Proposals
                 </div>
                 <div class="ui selection celled list">
                     <% @proposals.each do |proposal| %>
-                        <div class="item">
+                        <%= link_to proposal, class: 'item' do %>
                             <div class="content">
                                 <div class="ui medium header"><%= proposal.title %>
                                     <div class="sub header">
@@ -54,15 +71,17 @@
                                     <%= proposal.description %>
                                 </div>
                             </div>
-                        </div>
+                        <% end %>
                     <% end %>
                 </div>
             </div>
             <%= link_to "See more submitted proposals", proposals_path, class: "ui button bottom orange attached" %>
+            <% if can? :create, Proposal %>
             <div class="ui basic segment center aligned">
                 <div class="ui small header" style="margin-bottom: 0;">Do you have a new proposal?</div>
                 <%= link_to 'Submit New Proposal', new_proposal_path, class: 'ui button orange' %>
             </div>
+            <% end %>
         </div>
     </div>
 </div>

@@ -12,17 +12,36 @@ $(document).ready(function(){
     ;
     serverTime = $('#time').data('time') * 1000;
     today = new Date();
-    startTime();
+
+    if($('#time').length){
+        startTime();
+    }
 
     // $('.ui.checkbox')
     //     .checkbox()
     // ;
 
+    $('.ui.button').on('click', function(){
+        $(this).addClass('loading');
+    });
+
+
+    $(".ui.button").removeClass('loading');
+
     $('.ui.dropdown').dropdown();
+
+    $('.ui.radio.checkbox').checkbox();
 });
 
+function toggle_alert() {
+    location.reload();
+    return confirm('You are about to toggle the submission period, are you sure?');
+}
 
-
+function submission_alert() {
+    this.removeClass('loading');
+    return confirm('You can only submit once per submission period, are you sure?');
+}
 
 function startTime() {
     today.setTime(serverTime);

@@ -82,21 +82,31 @@
 <div class="field">
   <div class="ui checkbox">
     <%= f.check_box :submitAgency %>
-    <%= f.label :submitAgency, "Have you submitted this proposal to any other funding agency? If yes, please state"%>
+    <%= f.label :submitAgency, "Have you submitted this proposal to any other funding agency?"%>
   </div>
 </div>
 
+<div class="field">
+  <%= f.label :listAgency, "If yes, please state the agencies" %>
+  <%= f.text_area :listAgency, placeholder: "List of Agencies" %>
+</div>
+
   <div class="required field">
-    <%= f.label :attachment, "Upload Proposal PDF"%>
-    <%= f.file_field :attachment %>
+    <%= f.label :attachment, "Upload Proposal (PDF)"%>
+    <%= f.file_field :attachment, accept: '.pdf' %>
+  </div>
+
+  <div class="required field">
+    <%= f.label :recommendation, "Upload Recommendation (PDF)"%>
+    <%= f.file_field :recommendation, accept: '.pdf' %>
   </div>
 
     <div class="field">
-      <div class="ui mini buttons">
-        <%= f.submit "Save as Draft", class: "ui button"%>
-        <div class="or"></div>
-        <%= f.submit "Submit", class: "ui positive button" %>
-      </div>
+        <div class="ui mini buttons">
+          <%= f.submit "Save as Draft", class: "ui button"%>
+          <div class="or"></div>
+          <%= f.submit "Submit", class: "ui positive button", onclick: 'return submission_alert();' %>
+        </div>
     </div>
     <%=  f.hidden_field :user_id, value: current_user.id %>
 <% end %>

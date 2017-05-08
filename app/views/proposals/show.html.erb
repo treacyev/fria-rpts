@@ -1,82 +1,220 @@
-<p>
-  <strong>Title of Project</strong>
-  <%= @proposal.title %>
-</p>
+<div class="ui container text proposal content">
+  <div class="ui segment">
+    <div class="ui grid">
 
-<p>
-  <strong>Principal Researcher</strong>
-  <%= @proposal.principalResearcher %>
-</p>
+      <div class="one column row">
+        <div class="column">
+          <h2 class="ui header">
+            <div class="sub header">
+            Title of Project:
+            </div>
+            <%= @proposal.title %> 
+          </h2>
+        </div>
+      </div>
 
-<p>
-  <strong>Name of Coresearchers</strong>
-  <%= @proposal.coresearchers %>
-</p>
+      <div class="two column row">
+        <div class="column">
+          <h3 class="ui medium header">
+            <div class="sub header">
+            Principal Researcher:
+            </div>
+            <%= @proposal.principalResearcher %>
+          </h3>
+        </div>
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            Total Research and Development Cost
+            </div>
+            <%= @proposal.rdCost %>
+          </div>
+        </div>
+      </div>
 
-<p>
-  <strong>Total Research and Development Cost</strong>
-  <%= @proposal.rdCost %>
-</p>
+      <div class="two column row">
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            Name of Coresearchers:
+            </div>
+            <%= @proposal.coresearchers.present? ? @proposal.coresearchers : 'N/A' %>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            Source of External Funds:
+            </div>
+            <%= @proposal.sourceExternal.present? ? @proposal.sourceExternal : 'N/A'%>
+          </div>
+        </div>
+      </div>
 
-<p>
-  <strong>Source of External Funds</strong>
-  <%= @proposal.sourceExternal %>
-</p>
+      <div class="two column row">
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            Facilities, Materials, Staff within the Department or College (if any):
+            </div>
+            <%= @proposal.facMat.present? ? @proposal.facMat : 'N/A'%>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            Amount of External Funds:
+            </div>
+            <%= @proposal.amountExternal.present? ? @proposal.amountExternal : 'N/A'%>
+          </div>
+        </div>
+      </div>
 
-<p>
-  <strong>Amount of External Funds</strong>
-  <%= @proposal.amountExternal %>
-</p>
+      <div class="one column row">
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            Description of Work Done and Accomplishemnts (if project is in progress):
+            </div>
+            <%= @proposal.description.present? ? @proposal.description : 'N/A'%>
+          </div>
+        </div>
+      </div>
 
-<p>
-  <strong>Facilities, Materials, Staff within the Department or College (if any)</strong>
-  <%= @proposal.facMat %>
-</p>
+      <div class="one column row">
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            Objectives of the Project:
+            </div>
+            <%= @proposal.objectives.present? ? @proposal.objectives : 'N/A'%>
+          </div>
+        </div>
+      </div>
 
-<p>
-  <strong>Objectives of the Project</strong>
-  <%= @proposal.objectives %>
-</p>
+      <div class="two column row">
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            Expected Outputs:
+            </div>
+            <%= @proposal.expectedOutputs.present? ? @proposal.expectedOutputs : 'N/A'%>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            Estimated Number of Hours Per Week Devoted to this Project:
+            </div>
+            <%= @proposal.weeklyHours.present? ? @proposal.weeklyHours : 'N/A'%>
+          </div>
+        </div>
+      </div>
+      
+      <div class="one column row">
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            Have you attained endorsement from Department Head/Chairman?: 
+            <i class="icon <%= @proposal.endorsement.present? ? 'checkmark': 'remove' %>"></i> 
+            </div>
+          </div>
+        </div>
+      </div>
 
-<p>
-  <strong>Expected Outputs</strong>
-  <%= @proposal.expectedOutputs %>
-</p>
+      <div class="one column row">
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            Have you submitted this proposal to any other funding agency?: 
+            <i class="icon <%= @proposal.submitAgency.present? ? 'checkmark': 'remove' %>"></i> 
+            </div>
+          </div>
+        </div>
+      </div>
 
-<p>
-  <strong>Description of Work Done and Accomplishemnts (if project is in progress)</strong>
-  <%= @proposal.description %>
-</p>
+      <div class="one column row">
+        <div class="column">
+          <div class="ui tiny header">
+            <div class="sub header">
+            List of Agencies:
+            </div>
+            <%= @proposal.listAgency.present? ? @proposal.listAgency : 'N/A'%>
+          </div>
+        </div>
+      </div>
+      
+   
+      <div class="row centered" style="margin-bottom: 10px;">
+        <div class="six wide column right aligned">
+          <%= link_to @proposal.attachment.url, class: 'ui mini button green' do %>
+            Download Proposal <i class="icon arrow down"></i>
+          <% end %>
+        </div>
+        <div class="six wide column">
+          <%= link_to @proposal.recommendation.url, class: 'ui mini button green' do %>
+            Download Recommendation <i class="icon arrow down"></i>
+          <% end %>
+        </div>
+      </div>
 
-<p>
-  <strong>Estimated Number of Hours Per Week Devoted to this Project</strong>
-  <%= @proposal.weeklyHours %>
-</p>
+      <!--
+      <%= link_to 'Edit', edit_proposal_path(@proposal) %> |
+      <%= link_to 'Back', proposals_path %>
+      -->
+    </div>
+  </div>
 
-<p>
-  <strong>Have you attained endorsement from Department Head/Chairman?</strong>
-  <%= @proposal.endorsement %>
-</p>
+  <div class="ui segment">
+    <div class="ui grid">
 
-<p>
-  <strong>Have you submitted this proposal to any other funding agency? If yes, please state</strong>
-  <%= @proposal.submitAgency %>
-</p>
+      <div class="row centered">
+        <div class="six wide column">
+              <div class="ui medium header center aligned">Vote</div>
+              <div class="ui form">
+                <div class="inline fields">
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="vote" checked="" tabindex="0" class="hidden">
+                      <label>Accept</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="vote" tabindex="0" class="hidden">
+                      <label>Reject</label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="ui radio checkbox">
+                      <input type="radio" name="vote" tabindex="0" class="hidden">
+                      <label>Resubmit</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
 
-<p>
-  <strong>List of Agencies</strong>
-  <%= @proposal.listAgency %>
-</p>
+        <div class="row centered">
+          <div class="ten wide column">
+             <div class="ui medium header center aligned">Comments</div>
+             <div class="ui form">
+              <div class="field">
+                <textarea rows="2"></textarea>
+              </div>
+              <button class="ui mini button right floated">Submit</button>
+            </div>
+            <br>
+            <div class="ui basic segment center aligned">
+              <div class="ui medium header">Review</div>
+              <button class="ui mini orange button">Upload PDF Review</button>
+            </div>
+          </div>
+      </div>
 
-<p>
-  <strong>Attachment</strong>
-  <%= @proposal.attachment %>
-</p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Status of Proposal</strong>
-  <%= @proposal.status %>
-</p>
 
-<%= link_to 'Edit', edit_proposal_path(@proposal) %> |
-<%= link_to 'Back', proposals_path %>
