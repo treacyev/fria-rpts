@@ -10,7 +10,7 @@ class ProposalsController < ApplicationController
     authorize! :read, @proposal
 
     @review = Review.new
-    @reviews = @proposal.reviews
+    @current_review = @proposal.reviews.where('user_id = ?', current_user.id).first
   end
 
   def new

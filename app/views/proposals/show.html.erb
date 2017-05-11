@@ -165,7 +165,8 @@
     </div>
   </div>
 
-  <% if can? :create, Review %>
+  <% if can?(:create, Review) && current_user.reviews.where('proposal_id = ?', @proposal.id).length < 1 %>
+    <div class="ui divider"></div>
     <div class="ui segment">
       <%= form_for @review, html: { class: 'ui form' } do |f| %>
         <div class="field">
@@ -176,18 +177,64 @@
           <%= f.label :attachment, "Review PDF" %>
           <%= f.file_field :attachment, accept: '.pdf'%>
         </div>
-          <div class="ui grid" style="margin-bottom: 5px;">
-            <div class="two column row centered">
-              <div class="column center aligned">
-                <%= f.submit 'Accept', class: 'ui button green small' %>
-                <%= f.submit 'Resubmit', class: 'ui button orange small' %>
-                <%= f.submit 'Reject', class: 'ui button red small' %>
-              </div>
+        <div class="ui grid" style="margin-bottom: 5px;">
+          <div class="two column row centered">
+            <div class="column center aligned">
+              <%= f.submit 'Accept', class: 'ui button green small' %>
+              <%= f.submit 'Resubmit', class: 'ui button orange small' %>
+              <%= f.submit 'Reject', class: 'ui button red small' %>
             </div>
           </div>
+        </div>
+        <%= f.hidden_field :proposal_id, value: @proposal.id %>
       <% end %>
     </div>  
+
+  <% elsif can? :read, @current_review %>
+    <div class="ui divider"></div>
+    <div class="ui segment">
+      <div class="ui grid">
+
+        <div class="one column row">
+          <div class="column">
+            <h2 class="ui header">
+              <div class="sub header">
+              Vote:
+              <% if @current_review.vote == -1 %>
+                <div class="ui label red horizontal">Reject</div>
+              <% elsif @current_review.vote == 1 %>
+                <div class="ui label orange horizontal">Resubmit</div>
+              <% elsif @current_review.vote == 2 %>
+                <div class="ui label green horizontal">Accept</div>
+              <% end %>
+              </div>
+            </h2>
+          </div>
+        </div>
+
+        <div class="one column row">
+          <div class="column">
+            <h4 class="ui header">
+              <div class="sub header">
+              Comment:
+              </div>
+              <%= @current_review.comment.present? ? @current_review.comment : 'N/A' %> 
+            </h4>
+          </div>
+        </div>
+
+        <% if @current_review.attachment.present? %>
+          <div class="column row centered" style="margin-bottom: 10px;">
+            <div class="column center aligned">
+                <%= link_to @current_review.attachment.url, class: 'ui button green small' do %>
+                  <i class="icon arrow down"></i>Download Review
+                <% end %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
   <% end %>
 </div>
-
-

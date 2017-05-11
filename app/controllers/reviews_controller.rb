@@ -16,13 +16,25 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    authorize! :create, Review
     @review = Review.new(review_params)
-
-    if @review.save
-      redirect_to @review
-    else
-      render 'new'
+    if current_user.reviews.where('proposal_id = ?', @review.proposal_id).length > 0
+      flash[:negative] = "You can only give a review once per proposal"
+      redirect_to :back and return
     end
+    @review.user_id = current_user.id
+
+    if params[:commit] == "Reject"
+      @review.vote = -1
+    elsif params[:commit] == "Accept"
+      @review.vote = 2
+    elsif params[:commit] == "Resubmit"
+      @review.vote = 1
+    end
+    
+    @review.save
+
+    redirect_to :back
   end
 
   def update
@@ -44,6 +56,6 @@ class ReviewsController < ApplicationController
 
   private
     def review_params
-      params.require(:review).permit(:attachment, :isDraft, :vote)
+      params.require(:review).permit(:attachment, :vote, :comment, :proposal_id)
     end
 end
