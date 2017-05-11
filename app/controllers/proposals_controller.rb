@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   def index
-    @proposal_status = ['Pending', 'Resubmit', 'Accepted', 'Canceled', 'Denied']
+    @proposal_status = ['Pending', 'Resubmit', 'Accepted', 'Cancelled', 'Rejected']
     authorize! :index, Proposal
     @proposals = Proposal.accessible_by(current_ability).reverse
   end
@@ -8,6 +8,9 @@ class ProposalsController < ApplicationController
   def show
     @proposal = Proposal.find(params[:id])
     authorize! :read, @proposal
+
+    @review = Review.new
+    @reviews = @proposal.reviews
   end
 
   def new

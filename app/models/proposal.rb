@@ -18,6 +18,7 @@ class Proposal < ApplicationRecord
   mount_uploader :recommendation, RecommendationUploader
 
   belongs_to :user
+  has_many :reviews
 
   def set_status
     self.status = 0

@@ -43,10 +43,14 @@ class Ability
     elsif user.type == "CommitteeMember"
       can :index, Proposal
       can :read, Proposal
+      can :create, Review
+      can :read, Review, user_id: user.id
     elsif user.type == "CommitteeHead"
       can :index, Proposal
       can :read, Proposal      
       can :toggle, SubmissionPeriod
+      can :edit, Proposal 
+      can :read, Review
     elsif user.type == "Dean"
       can :index, Proposal
       can :read, Proposal

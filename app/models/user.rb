@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable 
   has_many :proposals
+  has_many :reviews
 
   validates :first_name, :last_name, :rank, :department, :contact_number, presence: true
 
