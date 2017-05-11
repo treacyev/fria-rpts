@@ -50,6 +50,7 @@ class Ability
       can :read, Proposal      
       can :toggle, SubmissionPeriod
       can :edit, Proposal 
+      can :vote, Proposal
       can :read, Review
     elsif user.type == "Dean"
       can :index, Proposal

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511061406) do
+ActiveRecord::Schema.define(version: 20170511132954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170511061406) do
     t.integer  "status"
     t.boolean  "is_draft"
     t.string   "recommendation"
+    t.integer  "head_vote"
     t.index ["user_id"], name: "index_proposals_on_user_id", using: :btree
   end
 

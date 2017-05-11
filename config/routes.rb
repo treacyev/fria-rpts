@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   post '/proposal/cancel' => 'proposals#cancel', as: 'cancel_proposal'
   get '/submission_period/toggle' => 'submission_periods#toggle', as: 'toggle_submission_period'
+  get '/proposal/vote' => 'proposals#head_vote', as: 'head_vote'
   get '/myproposals' => 'landing_page#researcher_proposals', as: 'myproposals' #DELETE LATER
   get '/viewproposal' => 'landing_page#researcher_view', as: 'viewproposal' #DELETE LATER
   get '/home' => 'landing_page#member_home', as: 'memberhome' #DELETE LATER

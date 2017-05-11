@@ -9,8 +9,13 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find(params[:id])
     authorize! :read, @proposal
 
-    @review = Review.new
-    @current_review = @proposal.reviews.where('user_id = ?', current_user.id).first
+    if current_user.type == 'CommitteeMember'
+      @review = Review.new
+      @current_review = @proposal.reviews.where('user_id = ?', current_user.id).first
+    elsif current_user.type == 'CommitteeHead'
+      @reviews = @proposal.reviews
+    end
+
   end
 
   def new
@@ -76,6 +81,21 @@ class ProposalsController < ApplicationController
     @proposal.destroy
 
     redirect_to proposals_path
+  end
+
+  def head_vote
+    @proposal = Proposal.find(params[:proposal_id])
+    authorize! :vote, @proposal
+    if params[:vote] == "Accept"
+      @proposal.head_vote = 2
+    elsif params[:vote] == "Resubmit"
+      @proposal.head_vote = 1
+    elsif params[:vote] == "Reject"
+      @proposal.head_vote = -1
+    end
+
+    @proposal.save
+    redirect_to :back
   end
 
   private
