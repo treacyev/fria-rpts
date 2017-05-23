@@ -11,8 +11,8 @@ CarrierWave.configure do |config|
 
     # Configuration for Amazon S3
     :provider              => 'AWS',
-    :aws_access_key_id     => ENV['S3_KEY'],
-    :aws_secret_access_key => ENV['S3_SECRET'],
+    :aws_access_key_id     => 'AKIAJF6T5YSSHZ74FBBA',
+    :aws_secret_access_key => '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',
     :region                => 'ap-southeast-1'
   }
 

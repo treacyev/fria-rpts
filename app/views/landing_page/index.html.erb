@@ -52,18 +52,15 @@
                 </div>
                 <div class="ui selection celled list">
                     <% @proposals.each do |proposal| %>
-                        <%= link_to proposal, class: 'item' do %>
+                        <div class="item">
                             <div class="content">
                                 <div class="ui medium header"><%= proposal.title %>
-                                    <div class="sub header">
-                                        <%= proposal.user.full_name %>
-                                    </div>
                                 </div> 
                                 <div class="description">
                                     <%= proposal.description %>
                                 </div>
                             </div>
-                        <% end %>
+                        </div>
                     <% end %>
                 </div>
             </div>
