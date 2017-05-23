@@ -1,33 +1,37 @@
-<%= form_for @announcement do |f| %>
+
+<%= form_for @announcement, html: { class: 'ui form' } do |f| %>
+
   <% if @announcement.errors.any? %>
-    <div id="error_explanation">
-      <h2>
+    <div id="error_explanation" class="ui message">
+      <h2 class="ui header">
         <%= pluralize(@announcement.errors.count, "error") %> prohibited
-        this announcement from being saved:
+        this announcement from being submitted:
       </h2>
-      <ul>
+      <ul class="ui list">
         <% @announcement.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <li class="item"><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <p>
-    <%= f.label :"Title"%><br>
-    <%= f.text_field :title %>
-  </p>
+  <div class="required field">
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, placeholder: "Title" %>
+  </div>
 
-  <p>
-    <%= f.text_area :text %>
-  </p>
+    <div class="required field">
+      <%= f.label :text, "Content"%>
+      <%= f.text_area :text, placeholder: "Content of Announcement" %>
+    </div>
 
-  <p>
-    <%= f.label :"Save as Draft?"%><br>
-    <%= f.check_box :isDraft %>
-  </p>
+    <div class="field">
+        <div class="ui mini buttons">
+          <%= f.submit "Save as Draft", class: "ui button"%>
+          <div class="or"></div>
+          <%= f.submit "Submit", class: "ui positive button" %>
+        </div>
+    </div>
 
-  <p>
-    <%= f.submit %>
-  </p>
 <% end %>
+

@@ -4,13 +4,22 @@
             <div class="ui segment">
                 <div class="ui huge header">
                     Announcements
+                    <% if can? :create, Announcement %>
+                    <%= link_to 'Add Announcement', new_announcement_path, class: 'ui button right floated orange', style: 'margin-top: 0;'%>
+                    <% end %>
                 </div>
                 <div class="ui celled feed">
                     <% @announcements.each do |announcement| %>
                         <div class="event">
                             <div class="content">
                                 <div class="summary">
+                                    <% if announcement.isDraft %>
+                                        <div class="ui horizontal label tiny">Draft</div>
+                                    <% end %>
                                     <%= announcement.title %>
+                                    <%= link_to edit_announcement_path(announcement) do %>
+                                        <i class="icon edit"></i>
+                                    <% end %>
                                 </div>
                                 <div class="meta">
                                     <div class="date"><%= announcement.created_at %></div>

@@ -4,19 +4,30 @@ class AnnouncementsController < ApplicationController
   end
 
   def show
+    authorize! :show, Announcement
     @announcement = Announcement.find(params[:id])
   end
 
   def new
+    authorize! :create, Announcement
     @announcement = Announcement.new
   end
 
   def edit
+    authorize! :edit, Announcement
     @announcement = Announcement.find(params[:id])
   end
 
   def create
+    authorize! :create, Announcement
+    
     @announcement = Announcement.new(announcement_params)
+
+    if params[:commit] == "Save as Draft"
+      @announcement.is_draft = true
+    elsif params[:commit] == "Submit"
+      @announcement.is_draft = false
+    end
 
     if @announcement.save
       redirect_to @announcement
@@ -26,6 +37,8 @@ class AnnouncementsController < ApplicationController
   end
 
   def update
+    authorize! :edit, Announcement
+    
     @announcement = Announcement.find(params[:id])
 
     if @announcement.update(announcement_params)
@@ -36,6 +49,8 @@ class AnnouncementsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, Announcement
+    
     @announcement = Announcement.find(params[:id])
     @announcement.destroy
 

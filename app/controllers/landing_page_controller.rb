@@ -1,7 +1,11 @@
 class LandingPageController < ApplicationController
     def index
         @user = User.new
-        @announcements = Announcement.where(:isDraft => false)
+        if current_user && current_user.type == 'CommitteeHead'
+            @announcements = Announcement.all.order('id DESC')
+        else
+            @announcements = Announcement.where(:isDraft => false).order('id DESC')
+        end
         @current_time = Time.now.to_i
         if current_user && current_user.type == 'Researcher'
             @proposals = current_user.proposals.last(5).reverse
