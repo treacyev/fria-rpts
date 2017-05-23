@@ -38,7 +38,20 @@
                         <% if proposal.is_draft%>
                         <td> Draft </td>
                         <% else %>
-                        <td><%= @proposal_status[proposal.status] %></td>
+                            <% committee_review = proposal.reviews.where(user_id: current_user.id).first %>
+                          <% if current_user.type == 'CommitteeMember' && !committee_review.nil? %>
+                            <td>
+                            <% if committee_review.vote == -1 %>
+                              <div class="ui label red horizontal">Reject</div>
+                            <% elsif committee_review.vote == 1 %>
+                              <div class="ui label orange horizontal">Resubmit</div>
+                            <% elsif committee_review.vote == 2 %>
+                              <div class="ui label green horizontal">Accept</div>
+                            <% end %>
+                            </td>
+                          <% else %>
+                            <td><%= @proposal_status[proposal.status] %></td>
+                          <% end %>
                         <% end %>
                         <td>
                           <%= link_to "View", proposal_path(proposal), class: "ui mini orange button" %>
