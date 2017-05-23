@@ -64,7 +64,7 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.find(params[:id])
     @announcement.destroy
 
-    redirect_to announcements_path
+    redirect_to :root
   end
 
   private

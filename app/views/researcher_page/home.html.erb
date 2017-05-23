@@ -19,7 +19,12 @@
                                     <%= announcement.title %>
                                     <% if can? :edit, Announcement %>
                                         <%= link_to edit_announcement_path(announcement) do %>
-                                            <i class="icon edit"></i>
+                                            <i class="icon edit" style="margin-right: 0px; margin-left: 5px;"></i>
+                                        <% end %>
+                                    <% end %>
+                                    <% if can? :destroy, Announcement %>
+                                        <%= link_to announcement_path(announcement),data: {:confirm => 'Are you sure?'}, method: :delete do %>
+                                            <i class="icon remove"></i>
                                         <% end %>
                                     <% end %>
                                 </div>

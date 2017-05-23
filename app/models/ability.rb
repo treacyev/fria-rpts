@@ -55,6 +55,7 @@ class Ability
       can :read, Review
       can :create, Announcement
       can :edit, Announcement
+      can :destroy, Announcement
       cannot :index, Proposal, status: -2
     elsif user.type == "Dean"
       can :index, Proposal, head_vote: 2
