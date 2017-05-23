@@ -89,9 +89,9 @@ class ProposalsController < ApplicationController
     if params[:vote] == "Accept"
       @proposal.head_vote = 2
     elsif params[:vote] == "Resubmit"
-      @proposal.head_vote = 1
+      @proposal.status = 1
     elsif params[:vote] == "Reject"
-      @proposal.head_vote = -1
+      @proposal.status = -1
     end
 
     @proposal.save
