@@ -24,13 +24,13 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.new(announcement_params)
 
     if params[:commit] == "Save as Draft"
-      @announcement.is_draft = true
+      @announcement.isDraft = true
     elsif params[:commit] == "Submit"
-      @announcement.is_draft = false
+      @announcement.isDraft = false
     end
 
     if @announcement.save
-      redirect_to @announcement
+      redirect_to :root
     else
       render 'new'
     end
@@ -41,8 +41,18 @@ class AnnouncementsController < ApplicationController
     
     @announcement = Announcement.find(params[:id])
 
+    if params[:commit] == "Save as Draft"
+      @announcement.isDraft = true
+    elsif params[:commit] == "Submit"
+      if @announcement.isDraft
+        @announcement.isDraft = true
+        @announcement.created_at = Time.now
+      end
+      @announcement.isDraft = false
+    end
+
     if @announcement.update(announcement_params)
-      redirect_to @announcement
+      redirect_to :root
     else
       render 'edit'
     end
