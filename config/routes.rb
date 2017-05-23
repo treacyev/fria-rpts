@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   post '/proposal/cancel' => 'proposals#cancel', as: 'cancel_proposal'
   get '/submission_period/toggle' => 'submission_periods#toggle', as: 'toggle_submission_period'
   get '/proposal/vote' => 'proposals#head_vote', as: 'head_vote'
+  get '/proposal/veto' => 'proposals#veto', as: 'veto'
   resources :announcements
 end

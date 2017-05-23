@@ -98,6 +98,19 @@ class ProposalsController < ApplicationController
     redirect_to :back
   end
 
+  def veto
+    @proposal = Proposal.find(params[:proposal_id])
+    authorize! :veto, @proposal
+    if params[:vote] == "Accept"
+      @proposal.status = 2
+    elsif params[:vote] == "Reject"
+      @proposal.status = -1
+    end
+
+    @proposal.save
+    redirect_to :back
+  end
+
   private
     def proposal_params
       params.require(:proposal).permit(:title, :principalResearcher, :coresearchers, :rdCost, :sourceExternal, :amountExternal, :facMat, :objectives, :expectedOutputs, :description, :weeklyHours, :endorsement, :submitAgency, :listAgency, :attachment, :status, :user_id, :recommendation)

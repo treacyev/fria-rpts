@@ -55,6 +55,7 @@ class Ability
     elsif user.type == "Dean"
       can :index, Proposal, head_vote: 2
       can :read, Proposal, head_vote: 2
+      can :veto, Proposal, head_vote: 2
     elsif user.type == "Admin"
       can :index, User
     else

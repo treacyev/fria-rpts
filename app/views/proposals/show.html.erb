@@ -326,4 +326,35 @@
         </div>
       </div>
   <% end %>
+
+  <% if can? :veto, @proposal %>
+    <div class="ui segment">
+      <div class="ui grid">
+        <div class="two column row centered" style="margin-bottom: 10px;">
+          <div class="column center aligned">
+            <% if @proposal.head_vote.present? && @proposal.status != 0 %>
+              <div class="one column row">
+                <div class="column">
+                  <h2 class="ui header">
+                    <div class="sub header">
+                    Your vote:
+                    <% if @proposal.status == -1 %>
+                      <div class="ui label red horizontal">Reject</div>
+                    <% elsif @proposal.status == 2 %>
+                      <div class="ui label green horizontal">Accept</div>
+                    <% end %>
+                    </div>
+                  </h2>
+                </div>
+              </div>
+            <% else %>
+            <h3 class="ui header">Veto</h3>
+              <%= link_to 'Accept', veto_path(:proposal_id => @proposal.id, vote: 'Accept'), class: 'ui button green small' %>
+              <%= link_to 'Reject', veto_path(:proposal_id => @proposal.id, vote: 'Reject'), class: 'ui button red small' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
