@@ -20,28 +20,4 @@ class LandingPageController < ApplicationController
         end
     end
 
-    def researcher_submit	#DELETE LATER
-    end	
-
-    def researcher_proposal	#DELETE LATER
-    end
-
-    def researcher_view #DELETE LATER
-    end
-
-    def member_home #DELETE LATER
-    end
-
-    def member_proposals #DELETE LATER
-    end
-
-    def member_archive #DELETE LATER
-    end
-
-    def head_proposals #DELETE LATER
-    end
-
-    def head_home #DELETE LATER
-    end
-
 end

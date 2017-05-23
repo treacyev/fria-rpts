@@ -17,8 +17,10 @@
                                         <div class="ui horizontal label tiny">Draft</div>
                                     <% end %>
                                     <%= announcement.title %>
-                                    <%= link_to edit_announcement_path(announcement) do %>
-                                        <i class="icon edit"></i>
+                                    <% if can? :edit, Announcement %>
+                                        <%= link_to edit_announcement_path(announcement) do %>
+                                            <i class="icon edit"></i>
+                                        <% end %>
                                     <% end %>
                                 </div>
                                 <div class="meta">
