@@ -2,7 +2,7 @@ class ProposalsController < ApplicationController
   def index
     @proposal_status = ['Pending', 'Resubmit', 'Accepted', 'Cancelled', 'Rejected']
     authorize! :index, Proposal
-    @proposals = Proposal.accessible_by(current_ability).reverse
+    @proposals = Proposal.accessible_by(current_ability).order('id DESC')
   end
 
   def show
@@ -90,8 +90,10 @@ class ProposalsController < ApplicationController
       @proposal.head_vote = 2
     elsif params[:vote] == "Resubmit"
       @proposal.status = 1
+      @proposal.head_vote = 1
     elsif params[:vote] == "Reject"
       @proposal.status = -1
+      @proposal.head_vote = -1
     end
 
     @proposal.save

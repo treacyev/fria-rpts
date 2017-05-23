@@ -45,6 +45,7 @@ class Ability
       can :read, Proposal
       can :create, Review
       can :read, Review, user_id: user.id
+      cannot :index, Proposal, status: -2
     elsif user.type == "CommitteeHead"
       can :index, Proposal
       can :read, Proposal      
@@ -52,10 +53,12 @@ class Ability
       can :edit, Proposal 
       can :vote, Proposal
       can :read, Review
+      cannot :index, Proposal, status: -2
     elsif user.type == "Dean"
       can :index, Proposal, head_vote: 2
       can :read, Proposal, head_vote: 2
       can :veto, Proposal, head_vote: 2
+      cannot :index, Proposal, status: -2
     elsif user.type == "Admin"
       can :index, User
     else

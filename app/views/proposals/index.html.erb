@@ -14,6 +14,13 @@
                       <th>Pricinipal Researcher</th>
                     <% end %>
                     <th class="three wide">Status</th>
+                    <% if can? :vote, Proposal %>
+                      <th class="three wide">Vote</th>
+                    <% elsif can? :veto, Proposal %>
+                      <th class="three wide">Veto</th>
+                    <% elsif can? :create, Review %>
+                      <th class="three wide">Vote</th>
+                    <% end %>
                     <th class="four wide">Actions</th>
                   </tr></thead>
                   <tbody>
@@ -38,8 +45,37 @@
                         <% if proposal.is_draft%>
                         <td> Draft </td>
                         <% else %>
-                            <% committee_review = proposal.reviews.where(user_id: current_user.id).first %>
-                          <% if current_user.type == 'CommitteeMember' && !committee_review.nil? %>
+                          <td><%= @proposal_status[proposal.status] %></td>
+                        <% end %>
+                        <% if can? :vote, Proposal %>
+                          <% if !proposal.head_vote.nil? %>
+                            <td>
+                            <% if proposal.head_vote == -1 %>
+                              <div class="ui label red horizontal">Reject</div>
+                            <% elsif proposal.head_vote == 1 %>
+                              <div class="ui label orange horizontal">Resubmit</div>
+                            <% elsif proposal.head_vote == 2 %>
+                              <div class="ui label green horizontal">Accept</div>
+                            <% end %>
+                            </td>
+                          <% else %>
+                            <td>Pending</td>
+                          <% end %>
+                        <% elsif can? :veto, Proposal %>
+                          <% if proposal.head_vote == 1 %>
+                            <td>
+                            <% if proposal.status == -1 %>
+                              <div class="ui label red horizontal">Reject</div>
+                            <% elsif proposal.status == 2 %>
+                              <div class="ui label green horizontal">Accept</div>
+                            <% end %>
+                            </td>
+                          <% else %>
+                            <td>Pending</td>
+                          <% end %>
+                        <% elsif can? :create, Review %>
+                          <% committee_review = proposal.reviews.where(user_id: current_user.id).first %>
+                          <% if !committee_review.nil? %>
                             <td>
                             <% if committee_review.vote == -1 %>
                               <div class="ui label red horizontal">Reject</div>
@@ -50,7 +86,7 @@
                             <% end %>
                             </td>
                           <% else %>
-                            <td><%= @proposal_status[proposal.status] %></td>
+                          <td>Pending</td>
                           <% end %>
                         <% end %>
                         <td>
