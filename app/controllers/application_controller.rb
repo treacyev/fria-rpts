@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   before_action :login
   before_action :submission_period
   
+
+  rescue_from CanCan::AccessDenied do |exception|
+    render 'landing_page/404'
+  end
   protected
 
   def submission_period
