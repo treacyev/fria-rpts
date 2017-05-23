@@ -6,6 +6,8 @@ class LandingPageController < ApplicationController
         if current_user && current_user.type == 'Researcher'
             @proposals = current_user.proposals.last(5).reverse
             render 'researcher_page/home'
+        elsif current_user && current_user.type == 'Dean'
+            @proposals = Proposal.where(head_vote: 2).last(5).reverse
         elsif current_user && current_user.type != 'Admin'
             @proposals = Proposal.last(5).reverse
             render 'researcher_page/home'

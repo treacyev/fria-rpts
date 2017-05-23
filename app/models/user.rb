@@ -4,7 +4,7 @@ class User < ApplicationRecord
   before_create :set_user_type
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable 
-  devise :timeoutable, timeout_in: 15.minutes
+  devise :timeoutable, timeout_in: 5.seconds
   has_many :proposals
   has_many :reviews
 

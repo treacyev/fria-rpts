@@ -48,7 +48,7 @@
             </div>
             <div class="ui attached segment">
                 <div class="ui header center aligned">
-                    Accepted Proposals
+                    Accepted Proposals <%= 'by Committee Head' if current_user && current_user.type == 'Dean' %>
                 </div>
                 <div class="ui selection celled list">
                     <% @proposals.each do |proposal| %>

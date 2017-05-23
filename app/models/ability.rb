@@ -53,8 +53,8 @@ class Ability
       can :vote, Proposal
       can :read, Review
     elsif user.type == "Dean"
-      can :index, Proposal
-      can :read, Proposal
+      can :index, Proposal, head_vote: 2
+      can :read, Proposal, head_vote: 2
     elsif user.type == "Admin"
       can :index, User
     else
