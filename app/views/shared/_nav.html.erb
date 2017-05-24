@@ -41,6 +41,7 @@
 								<%= link_to('Submit Proposal', new_proposal_path, class: 'item white') %>
 							</div>
 						</div>
+					<% elsif current_user.type == 'Admin' %>
 					<% else %>
 						<%= link_to('Proposals', proposals_path, class: 'item white') %>
 					<% end %>

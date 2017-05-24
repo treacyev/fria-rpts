@@ -64,6 +64,8 @@ class Ability
       cannot :index, Proposal, status: -2
     elsif user.type == "Admin"
       can :index, User
+      can :show, User
+      can :activate, User
     else
       can :index, Proposal, status: 2
     end

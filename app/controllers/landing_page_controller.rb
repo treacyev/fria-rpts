@@ -14,6 +14,7 @@ class LandingPageController < ApplicationController
             @proposals = Proposal.where(head_vote: 2).last(5).reverse
         elsif current_user && current_user.type == 'Admin'
             @users = User.all
+            authorize! :index, User 
             render 'admin/home'
         elsif current_user
             @proposals = Proposal.where(:is_draft => false).last(5).reverse
