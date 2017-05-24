@@ -16,7 +16,7 @@ class LandingPageController < ApplicationController
             @users = User.all
             render 'admin/home'
         elsif current_user
-            @proposals = Proposal.last(5).reverse
+            @proposals = Proposal.where(:is_draft => false).last(5).reverse
             render 'researcher_page/home'
         else
             @proposals = Proposal.where(status: 2).last(5).reverse

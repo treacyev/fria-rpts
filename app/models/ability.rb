@@ -41,17 +41,17 @@ class Ability
       can :cancel, Proposal, is_draft: true
       can :cancel, Proposal, status: 0
     elsif user.type == "CommitteeMember"
-      can :index, Proposal
-      can :read, Proposal
+      can :index, Proposal, is_draft: false
+      can :read, Proposal, is_draft: false
       can :create, Review
       can :read, Review, user_id: user.id
       cannot :index, Proposal, status: -2
     elsif user.type == "CommitteeHead"
-      can :index, Proposal
-      can :read, Proposal      
+      can :index, Proposal, is_draft: false
+      can :read, Proposal, is_draft: false      
       can :toggle, SubmissionPeriod
-      can :edit, Proposal 
-      can :vote, Proposal
+      can :edit, Proposal, is_draft: false 
+      can :vote, Proposal, is_draft: false
       can :read, Review
       can :create, Announcement
       can :edit, Announcement
