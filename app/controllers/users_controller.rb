@@ -5,4 +5,14 @@ class UsersController < ApplicationController
         authorize! :show, User
         @user = User.find(params[:id])
     end
+
+    def activate
+        @user = User.find(params[:id])
+        authorize! :activate, @user
+    
+        @user.update(activated?: true)
+        @user.save
+
+        redirect_to :root
+    end
 end

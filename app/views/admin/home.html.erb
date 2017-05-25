@@ -8,6 +8,7 @@
                 <table class="ui orange striped selectable celled table">
                   <thead>
                     <tr><th>Email</th>
+                    <th>Type</th>
                     <th>Status</th>
                     <th class="four wide">Actions</th>
                   </tr></thead>
@@ -15,6 +16,7 @@
                     <% @users.each do |user| %>
                     <tr>
                         <td><%= user.email %></td>
+                        <td><%= user.type %></td>
                         <td>
                             <% if user.activated? %>
                             Activated
@@ -23,6 +25,12 @@
                             <% end %>
                         </td>
                         <td>
+                            <% if can? :show, user %>
+                                <%= link_to 'View', show_user_path(user), class: 'ui button orange mini' %>
+                            <% end %>
+                            <% if can?(:activate, user) && !user.activated? && user.type == 'Researcher' %>
+                                <%= link_to 'Activate', activate_user_path(user), class: 'ui button green mini' %>
+                            <% end %>
                         </td>
                     </tr>
                     <% end %>
