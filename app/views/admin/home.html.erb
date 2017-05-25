@@ -18,10 +18,12 @@
                         <td><%= user.email %></td>
                         <td><%= user.type %></td>
                         <td>
-                            <% if user.activated? %>
+                            <% if user.activated? && user.type == 'Researcher' %>
                             Activated
-                            <% else %>
+                            <% elsif !user.activated? && user.type == 'Researcher' %>
                             Deactivated
+                            <% else %>
+                            N/A
                             <% end %>
                         </td>
                         <td>
@@ -31,6 +33,7 @@
                             <% if can?(:activate, user) && !user.activated? && user.type == 'Researcher' %>
                                 <%= link_to 'Activate', activate_user_path(user), class: 'ui button green mini' %>
                             <% end %>
+                            <% %>
                         </td>
                     </tr>
                     <% end %>

@@ -1,1 +1,81 @@
-<%= @user.email %>
+<div class="ui container text proposal content">
+  <div class="ui segment">
+    <div class="ui grid">
+      <div class="one column row">
+        <div class="column">
+          <h2 class="ui header">
+            <div class="sub header">
+            Name:
+            </div>
+            <% if @user.type == 'Researcher' %>
+                <div class="ui horizontal label orange">Researcher</div> 
+            <% elsif @user.type == 'Admin' %>
+                <div class="ui horizontal label orange">Admin</div> 
+            <% elsif @user.type == 'CommitteeHead' %>
+                <div class="ui horizontal label orange">Committee Head</div> 
+            <% elsif @user.type == 'CommitteeMember' %>
+                <div class="ui horizontal label orange">Committee Member</div> 
+            <% end %>
+            <%= @user.full_name %>
+          </h2>
+        </div>
+      </div>
+
+      <div class="one column row">
+        <div class="column">
+          <h3 class="ui header">
+            <div class="sub header">
+            Email:
+            </div>
+            <%= @user.email %>
+          </h3>
+        </div>
+      </div>
+
+      <div class="one column row">
+        <div class="column">
+          <h3 class="ui header">
+            <div class="sub header">
+            Department:
+            </div>
+            <%= @user.department %>
+          </h3>
+        </div>
+      </div>
+
+      <div class="one column row">
+        <div class="column">
+          <h3 class="ui header">
+            <div class="sub header">
+            Rank:
+            </div>
+            <%= @user.rank %>
+          </h3>
+        </div>
+      </div>
+
+      <div class="one column row">
+        <div class="column">
+          <h3 class="ui header">
+            <div class="sub header">
+            Contact Number:
+            </div>
+            <%= @user.contact_number %>
+          </h3>
+        </div>
+      </div>
+
+      <div class="one column row">
+        <div class="column">
+          <h5 class="ui header">
+            <div class="sub header">
+            Date Created:
+            </div>
+            <%= @user.created_at %>
+          </h5>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

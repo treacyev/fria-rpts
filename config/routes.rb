@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get '/proposal/veto' => 'proposals#veto', as: 'veto'
   get '/users/:id' => 'users#show', as: 'show_user'
   get '/users/:id/activate' => 'users#activate', as: 'activate_user'
+  get '/users/:id/delete' => 'users#destroy', as: 'destroy_user'
   resources :announcements, except: [:index]
 end
