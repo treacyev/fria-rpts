@@ -33,7 +33,9 @@
                             <% if can?(:activate, user) && !user.activated? && user.type == 'Researcher' %>
                                 <%= link_to 'Activate', activate_user_path(user), class: 'ui button green mini' %>
                             <% end %>
-                            <% %>
+                            <% if can? :destroy, user %>
+                                <%= link_to 'Delete', destroy_user_path(user), class: 'ui red button mini', data: { confirm: "Are you sure to delete #{user.email}?"} %>
+                            <% end %>
                         </td>
                     </tr>
                     <% end %>

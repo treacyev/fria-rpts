@@ -15,4 +15,13 @@ class UsersController < ApplicationController
 
         redirect_to :root
     end
+
+    def destroy
+        @user = User.find(params[:id])
+        authorize! :destroy, @user
+
+        @user.destroy
+
+        redirect_to :root
+    end
 end
