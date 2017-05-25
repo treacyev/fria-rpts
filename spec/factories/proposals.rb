@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :proposal do
     title "MyString"
-    principalResearcher "MyString"
+    principal_researcher "MyString"
     coresearchers "MyText"
     rdCost 1.5
     sourceExternal "MyString"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523170035) do
+ActiveRecord::Schema.define(version: 20170525161209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170523170035) do
 
   create_table "proposals", force: :cascade do |t|
     t.string   "title"
-    t.string   "principalResearcher"
+    t.string   "principal_researcher"
     t.text     "coresearchers"
     t.float    "rdCost"
     t.string   "sourceExternal"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20170523170035) do
     t.boolean  "submitAgency"
     t.text     "listAgency"
     t.string   "attachment"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "user_id"
     t.integer  "status"
     t.boolean  "is_draft"

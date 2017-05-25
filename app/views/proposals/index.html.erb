@@ -39,7 +39,7 @@
                         </td>
                         <% if can? :index, Proposal %>
                           <td>
-                            <%= proposal.principalResearcher %>
+                            <%= proposal.principal_researcher %>
                           </td>
                         <% end %>
                         <% if proposal.is_draft%>
@@ -105,13 +105,21 @@
             </div>
             <% else %>
               <div class="ui medium header">Accepted Proposals</div>
+              <div class="ui basic segment">
+                <%= form_tag search_proposal_path, :method => 'get' do %>
+                  <div class="ui input">
+                    <%= text_field_tag :search, params[:search], placeholder: 'Search' %>
+                  </div>
+                  <%= submit_tag "Search", :name => nil, class: 'ui orange button' %>
+                <% end %>
+              </div>
               <div class="ui segment text">
                 <div class="ui divided list">
                   <% @proposals.each do |proposal| %>
                     <div class="item">
                       <div class="content">
                         <div class="header"><%= proposal.title %></div>
-                        <%= proposal.principalResearcher %>
+                        <%= proposal.principal_researcher %>
                       </div>
                     </div>
                   <% end %>

@@ -113,8 +113,14 @@ class ProposalsController < ApplicationController
     redirect_to :back
   end
 
+  def search
+    key = params[:search]
+    @proposals = Proposal.where('title LIKE ? OR principal_researcher LIKE ?', "%#{key}%", "%#{key}%").where(status: 2)
+    render 'index'
+  end
+
   private
     def proposal_params
-      params.require(:proposal).permit(:title, :principalResearcher, :coresearchers, :rdCost, :sourceExternal, :amountExternal, :facMat, :objectives, :expectedOutputs, :description, :weeklyHours, :endorsement, :submitAgency, :listAgency, :attachment, :status, :user_id, :recommendation)
+      params.require(:proposal).permit(:title, :principal_researcher, :coresearchers, :rdCost, :sourceExternal, :amountExternal, :facMat, :objectives, :expectedOutputs, :description, :weeklyHours, :endorsement, :submitAgency, :listAgency, :attachment, :status, :user_id, :recommendation)
     end
 end

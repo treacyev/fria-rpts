@@ -12,7 +12,7 @@ RSpec.describe Proposal, type: :model do
       expect(FactoryGirl.build(:proposal, title: nil)).to be_invalid
     end
     it 'is invalid without a principal researcher' do
-      expect(FactoryGirl.build(:proposal, principalResearcher: nil)).to be_invalid
+      expect(FactoryGirl.build(:proposal, principal_researcher: nil)).to be_invalid
     end
     it 'is invalid without objectives' do
       expect(FactoryGirl.build(:proposal, objectives: nil)).to be_invalid
