@@ -100,13 +100,16 @@
     <%= f.label :recommendation, "Upload Recommendation (PDF)"%>
     <%= f.file_field :recommendation, accept: '.pdf' %>
   </div>
-
-    <div class="field">
-        <div class="ui mini buttons">
-          <%= f.submit "Save as Draft", class: "ui button"%>
-          <div class="or"></div>
-          <%= f.submit "Submit", class: "ui positive button", onclick: 'return submission_alert();' %>
-        </div>
-    </div>
+    <% if current_user.activated? %>
+      <div class="field">
+          <div class="ui mini buttons">
+            <%= f.submit "Save as Draft", class: "ui button"%>
+            <div class="or"></div>
+            <%= f.submit "Submit", class: "ui positive button", onclick: 'return submission_alert();' %>
+          </div>
+      </div>
+    <% else %>
+      <%= f.submit "Save as Draft", class: "ui button"%>
+    <% end %>
     <%=  f.hidden_field :user_id, value: current_user.id %>
 <% end %>

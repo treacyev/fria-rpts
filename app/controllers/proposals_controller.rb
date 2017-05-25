@@ -32,6 +32,12 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params)
     authorize! :create, @proposal
 
+    if !current_user.activated?
+      @proposal.is_draft = true
+      @proposal.save
+      redirect_to @proposal
+    end
+
     if params[:commit] == "Save as Draft"
       @proposal.is_draft = true
     elsif params[:commit] == "Submit" && !current_user.submitted

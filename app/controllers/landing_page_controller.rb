@@ -13,7 +13,7 @@ class LandingPageController < ApplicationController
         elsif current_user && current_user.type == 'Dean'
             @proposals = Proposal.where(head_vote: 2).last(5).reverse
         elsif current_user && current_user.type == 'Admin'
-            @users = User.all
+            @users = User.all.order('id DESC')
             authorize! :index, User 
             render 'admin/home'
         elsif current_user

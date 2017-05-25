@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  before_create :set_user_type
+  before_create :set_user_type, :set_activated
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable 
   devise :timeoutable, timeout_in: 15.minutes
@@ -12,6 +12,14 @@ class User < ApplicationRecord
 
   def set_user_type
     self.type ||= 'Researcher'
+  end
+
+  def set_activated
+    if self.type == 'Admin' || self.type == 'CommitteeHead' || self.type == 'CommitteeMember' || self.type == 'Dean'
+      self.write_attribute(:activated?, true)
+    else
+      self.write_attribute(:activated?, false)
+    end
   end
 
   def full_name
