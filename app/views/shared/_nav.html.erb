@@ -1,4 +1,4 @@
-<div class="ui fixed menu borderless" style="height: 110px;">
+<div class="ui fixed menu borderless" style="height: 110px; z-index: 11;">
 	<div class="ui container">
 		<div class="left menu">
 			<%= link_to root_path, class: 'item brand' do %>
@@ -57,7 +57,7 @@
 <%- # this is for the buffer of the nav bar. %>
 <div style="margin-top: 126px;"></div>
 <% if current_user && !current_user.activated? %>
-	<div class="ui inline nag fixed" style="background-color: #d24536; margin-top: 110px;">
+	<div class="ui inline nag fixed" style="background-color: #d24536; margin-top: 110px; z-index: 10;">
   <span class="title">
     Your account is yet to be activated. Please contact us if you think this should not be an error.
   </span>

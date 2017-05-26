@@ -123,6 +123,13 @@
                       </div>
                     </div>
                   <% end %>
+                  <% if @proposals.empty? %>
+                  <div class="item">
+                    <div class="content">
+                      <div class="header">No proposals found.</div>
+                    </div>
+                  </div>
+                  <% end %>
                 </div>
               </div>
             <% end %>

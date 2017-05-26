@@ -10,7 +10,7 @@
                     <tr><th>Email</th>
                     <th>Type</th>
                     <th>Status</th>
-                    <th class="four wide">Actions</th>
+                    <th class="five wide">Actions</th>
                   </tr></thead>
                   <tbody>
                     <% @users.each do |user| %>
@@ -33,8 +33,8 @@
                             <% if can?(:activate, user) && !user.activated? && user.type == 'Researcher' %>
                                 <%= link_to 'Activate', activate_user_path(user), class: 'ui button green mini' %>
                             <% end %>
-                            <% if can? :destroy, user %>
-                                <%= link_to 'Delete', destroy_user_path(user), class: 'ui red button mini', data: { confirm: "Are you sure to delete #{user.email}?"} %>
+                            <% if can?(:deactivate, user) && user.activated? && user.type == 'Researcher' %>
+                                <%= link_to 'Deactivate', deactivate_user_path(user), class: 'ui red button mini', data: { confirm: "Are you sure to deactivate #{user.email}?"} %>
                             <% end %>
                         </td>
                     </tr>

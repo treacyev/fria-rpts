@@ -16,12 +16,15 @@ class UsersController < ApplicationController
         redirect_to :root
     end
 
-    def destroy
+    def deactivate
         @user = User.find(params[:id])
-        authorize! :destroy, @user
+        authorize! :deactivate, @user
 
-        @user.destroy
-
+        if @user.type == 'Researcher'
+            @user.update(activated?: false)
+            @user.save
+        end 
+        
         redirect_to :root
     end
 end

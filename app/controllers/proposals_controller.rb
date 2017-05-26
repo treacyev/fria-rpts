@@ -36,6 +36,7 @@ class ProposalsController < ApplicationController
       @proposal.is_draft = true
       @proposal.save
       redirect_to @proposal
+      return
     end
 
     if params[:commit] == "Save as Draft"
@@ -121,7 +122,7 @@ class ProposalsController < ApplicationController
 
   def search
     key = params[:search]
-    @proposals = Proposal.where('title LIKE ? OR principal_researcher LIKE ?', "%#{key}%", "%#{key}%").where(status: 2)
+    @proposals = Proposal.where('title ILIKE ? OR principal_researcher ILIKE ?', "%#{key}%", "%#{key}%").where(status: 2)
     render 'index'
   end
 

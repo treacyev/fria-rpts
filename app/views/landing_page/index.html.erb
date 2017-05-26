@@ -52,6 +52,7 @@
                 </div>
                 <div class="ui selection celled list">
                     <% @proposals.each do |proposal| %>
+                        <% if !current_user %>
                         <div class="item">
                             <div class="content">
                                 <div class="ui medium header"><%= proposal.title %>
@@ -61,6 +62,17 @@
                                 </div>
                             </div>
                         </div>
+                        <% else %>
+                        <%= link_to proposal, class: 'item' do %>
+                            <div class="content">
+                                <div class="ui medium header"><%= proposal.title %>
+                                </div> 
+                                <div class="description">
+                                    <%= proposal.principal_researcher %>
+                                </div>
+                            </div>
+                        <% end %>
+                        <% end %>
                     <% end %>
                 </div>
             </div>

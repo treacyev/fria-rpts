@@ -66,7 +66,7 @@ class Ability
       can :index, User
       can :show, User
       can :activate, User
-      can :destroy, User
+      can :deactivate, User
     else
       can :index, Proposal, status: 2
     end
